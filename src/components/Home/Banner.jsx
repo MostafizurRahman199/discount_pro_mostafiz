@@ -8,13 +8,13 @@ export default function Banner() {
 
 
   return (
-    <div className="h-[500px] ">
-      <Carousel className=" h-full ">
+    <div className="h-[300px] md:h-[500px]">
+      <Carousel className="h-full">
         <div className="relative h-full w-full">
           <img
             src={banner12}
             alt="image 1"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover object-center"
           />
           <div className="absolute inset-0 grid h-full w-full place-items-center ">
             
@@ -24,7 +24,7 @@ export default function Banner() {
           <img
             src={banner13}
             alt="image 2"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover object-center"
           />
      
         </div>

@@ -1,0 +1,239 @@
+{
+    "brands": [
+      {
+        "_id": "b001",
+        "brand_name": "Nike",
+        "rating": 4.8,
+        "description": "Leading athletic footwear and apparel manufacturer offering premium sports equipment and fashion.",
+        "brand_logo": "https://logos-world.net/wp-content/uploads/2020/04/Nike-Logo.png",
+        "shop_link": "https://www.nike.com",
+        "category": "Sports & Athletics",
+        "isSaleOn": true,
+        "coupons": [
+          {
+            "coupon_code": "NIKE25OFF",
+            "description": "25% off on all running shoes",
+            "expiry_date": "2024-05-30",
+            "condition": "Valid on purchases above $100",
+            "coupon_type": "Percentage Discount"
+          },
+          {
+            "coupon_code": "SUMMER2024",
+            "description": "Free shipping on all orders",
+            "expiry_date": "2024-06-15",
+            "condition": "No minimum purchase required",
+            "coupon_type": "Free Shipping"
+          }
+        ]
+      },
+      {
+        "_id": "b002",
+        "brand_name": "Amazon",
+        "rating": 4.9,
+        "description": "World's largest e-commerce platform offering millions of products across categories.",
+        "brand_logo": "https://www.shutterstock.com/image-vector/nuremberg-germany-december-23th-2023-600nw-2404360865.jpg",
+        "shop_link": "https://www.amazon.com",
+        "category": "E-commerce",
+        "isSaleOn": true,
+        "coupons": [
+          {
+            "coupon_code": "PRIME50",
+            "description": "$50 off on Prime membership",
+            "expiry_date": "2024-04-30",
+            "condition": "New Prime members only",
+            "coupon_type": "Fixed Amount"
+          }
+        ]
+      },
+      {
+        "_id": "b003",
+        "brand_name": "Starbucks",
+        "rating": 4.6,
+        "description": "Premium coffee chain offering high-quality beverages and food items.",
+        "brand_logo": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/1200px-Starbucks_Corporation_Logo_2011.svg.png",
+        "shop_link": "https://www.starbucks.com",
+        "category": "Food & Beverage",
+        "isSaleOn": false,
+        "coupons": [
+          {
+            "coupon_code": "COFFEE20",
+            "description": "20% off on any coffee beverage",
+            "expiry_date": "2024-04-15",
+            "condition": "Valid at participating locations only",
+            "coupon_type": "Percentage Discount"
+          }
+        ]
+      },
+      {
+        "_id": "b004",
+        "brand_name": "Best Buy",
+        "rating": 4.5,
+        "description": "Leading electronics retailer offering the latest technology and gadgets.",
+        "brand_logo": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Best_Buy_Logo.svg",
+        "shop_link": "https://www.bestbuy.com",
+        "category": "Electronics",
+        "isSaleOn": true,
+        "coupons": [
+          {
+            "coupon_code": "TECH100",
+            "description": "$100 off on laptops",
+            "expiry_date": "2024-05-01",
+            "condition": "Valid on purchases above $800",
+            "coupon_type": "Fixed Amount"
+          }
+        ]
+      },
+      {
+        "_id": "b005",
+        "brand_name": "H&M",
+        "rating": 4.3,
+        "description": "Fashion retailer offering trendy clothing and accessories at affordable prices.",
+        "brand_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1280px-H%26M-Logo.svg.png",
+        "shop_link": "https://www.hm.com",
+        "category": "Fashion",
+        "isSaleOn": true,
+        "coupons": [
+          {
+            "coupon_code": "STYLE30",
+            "description": "30% off on entire purchase",
+            "expiry_date": "2024-04-20",
+            "condition": "Cannot be combined with other offers",
+            "coupon_type": "Percentage Discount"
+          }
+        ]
+      },
+      {
+        "_id": "b006",
+        "brand_name": "DoorDash",
+        "rating": 4.4,
+        "description": "Food delivery service connecting local restaurants with customers.",
+        "brand_logo": "https://1000logos.net/wp-content/uploads/2021/06/DoorDash-logo.png",
+        "shop_link": "https://www.doordash.com",
+        "category": "Food Delivery",
+        "isSaleOn": true,
+        "coupons": [
+          {
+            "coupon_code": "DASH15",
+            "description": "$15 off first order",
+            "expiry_date": "2024-06-30",
+            "condition": "New customers only",
+            "coupon_type": "Fixed Amount"
+          }
+        ]
+      },
+      {
+        "_id": "b007",
+        "brand_name": "Target",
+        "rating": 4.7,
+        "description": "Retail corporation offering a wide range of products at competitive prices.",
+        "brand_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Target_logo.svg/1200px-Target_logo.svg.png",
+        "shop_link": "https://www.target.com",
+        "category": "Retail",
+        "isSaleOn": false,
+        "coupons": [
+          {
+            "coupon_code": "SAVE40",
+            "description": "$40 off on purchases above $150",
+            "expiry_date": "2024-05-15",
+            "condition": "Excludes electronics and gift cards",
+            "coupon_type": "Fixed Amount"
+          }
+        ]
+      },
+      {
+        "_id": "b008",
+        "brand_name": "Sephora",
+        "rating": 4.6,
+        "description": "Premium beauty retailer offering cosmetics, skincare, and fragrances.",
+        "brand_logo": "https://1000logos.net/wp-content/uploads/2018/08/Sephora-Logo.png",
+        "shop_link": "https://www.sephora.com",
+        "category": "Beauty",
+        "isSaleOn": true,
+        "coupons": [
+          {
+            "coupon_code": "BEAUTY25",
+            "description": "25% off on skincare products",
+            "expiry_date": "2024-04-25",
+            "condition": "Valid for Beauty Insider members only",
+            "coupon_type": "Percentage Discount"
+          }
+        ]
+      },
+      {
+        "_id": "b009",
+        "brand_name": "Uber Eats",
+        "rating": 4.3,
+        "description": "Food delivery platform connecting restaurants with hungry customers.",
+        "brand_logo": "https://logos-world.net/wp-content/uploads/2020/11/Uber-Eats-Logo.png",
+        "shop_link": "https://www.ubereats.com",
+        "category": "Food Delivery",
+        "isSaleOn": true,
+        "coupons": [
+          {
+            "coupon_code": "EATS20",
+            "description": "$20 off your first order",
+            "expiry_date": "2024-06-01",
+            "condition": "Minimum order value $30",
+            "coupon_type": "Fixed Amount"
+          }
+        ]
+      },
+      {
+        "_id": "b010",
+        "brand_name": "Adidas",
+        "rating": 4.7,
+        "description": "Sports equipment manufacturer offering athletic wear and accessories.",
+        "brand_logo": "https://upload.wikimedia.org/wikipedia/commons/2/24/Adidas_logo.png",
+        "shop_link": "https://www.adidas.com",
+        "category": "Sports & Athletics",
+        "isSaleOn": true,
+        "coupons": [
+          {
+            "coupon_code": "RUN30",
+            "description": "30% off on running gear",
+            "expiry_date": "2024-05-20",
+            "condition": "Valid on select items only",
+            "coupon_type": "Percentage Discount"
+          }
+        ]
+      },
+      {
+        "_id": "b011",
+        "brand_name": "GameStop",
+        "rating": 4.2,
+        "description": "Video game, consumer electronics, and gaming merchandise retailer.",
+        "brand_logo": "https://logos-world.net/wp-content/uploads/2021/03/GameStop-Logo.png",
+        "shop_link": "https://www.gamestop.com",
+        "category": "Gaming",
+        "isSaleOn": false,
+        "coupons": [
+          {
+            "coupon_code": "GAME15",
+            "description": "15% off on pre-owned games",
+            "expiry_date": "2024-04-30",
+            "condition": "In-store purchases only",
+            "coupon_type": "Percentage Discount"
+          }
+        ]
+      },
+      {
+        "_id": "b012",
+        "brand_name": "Booking.com",
+        "rating": 4.5,
+        "description": "Online travel agency for lodging reservations and travel packages.",
+        "brand_logo": "https://logos-world.net/wp-content/uploads/2021/08/Booking-Logo.png",
+        "shop_link": "https://www.booking.com",
+        "category": "Travel",
+        "isSaleOn": false,
+        "coupons": [
+          {
+            "coupon_code": "TRAVEL100",
+            "description": "$100 off on hotel bookings",
+            "expiry_date": "2024-07-01",
+            "condition": "Minimum booking value $500",
+            "coupon_type": "Fixed Amount"
+          }
+        ]
+      }
+    ]
+  }
