@@ -119,14 +119,21 @@ const Brands = () => {
               <div className="flex-1 text-center sm:text-left">
                 <h2 className="text-xl font-bold">{brand.brand_name}</h2>
                 <p className="text-gray-600 mt-2">{brand.description}</p>
+                <p className="text-gray-500 mt-2 italic">
+                  <span 
+                    className="text-white bg-[#FED12D] rounded-3xl px-2 py-1"
+                  >
+                    #{brand.category}
+                  </span>
+                </p>
               </div>
 
               {/* Action Section */}
               <div className="flex flex-col items-center sm:items-end">
                 <button
                   onClick={() => handleViewCoupons(brand._id)}
-                  className="px-8 py-3 rounded-lg text-white font-bold transition-transform hover:scale-105 shadow-2xl"
-                  style={{ backgroundColor: '#BD9FF5', border: '3px solid #8E24AA'}}
+                  className="px-8 py-3 rounded-3xl text-white font-bold transition-transform hover:scale-105 shadow-2xl"
+                  style={{ backgroundColor: '#BD9FF5', border: '2px solid #BD9FF5'}}
                 >
                   View Coupons
                 </button>
