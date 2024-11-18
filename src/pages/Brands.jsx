@@ -132,8 +132,8 @@ const Brands = () => {
               <div className="flex flex-col items-center sm:items-end">
                 <button
                   onClick={() => handleViewCoupons(brand._id)}
-                  className="px-8 py-3 rounded-3xl text-white font-bold transition-transform hover:scale-105 shadow-2xl"
-                  style={{ backgroundColor: '#BD9FF5', border: '2px solid #BD9FF5'}}
+                  className="px-8 py-3 rounded-3xl text-white font-bold transition-transform hover:scale-105 shadow-2xl  hover:bg-[#FED12D]  bg-[#BD9FF5] "
+                  style={{  border: '2px solid #BD9FF5'}}
                 >
                   View Coupons
                 </button>

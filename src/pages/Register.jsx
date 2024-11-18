@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useFirebaseAuth } from '../Auth/AuthProvider';
+import { useFirebaseAuth  } from '../Auth/AuthProvider';
 
 import { FcGoogle } from 'react-icons/fc';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
@@ -8,7 +8,7 @@ import { toast, ToastContainer } from 'react-toastify';
 
 const Register = () => {
     const navigate = useNavigate();
-    const { registerUser, googleSignIn } = useFirebaseAuth();
+    const { registerUser, googleSignIn, setUser } = useFirebaseAuth();
     const [passwordError, setPasswordError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     
@@ -44,9 +44,13 @@ const Register = () => {
         }
 
         try {
-            await registerUser(formData.email, formData.password, formData.name, formData.photoURL);
-            toast.success('Registration successful!');
-            navigate('/');
+            const registeredUser = await registerUser(formData.email, formData.password, formData.name, formData.photoURL);
+            setUser(registeredUser);
+            if (registeredUser) {
+                toast.success('Registration successful!');
+                await registeredUser.reload();
+                navigate('/');
+            }
         } catch (error) {
             toast.error(error.message);
         }
@@ -64,7 +68,7 @@ const Register = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-lg w-full space-y-8 shadow-lg shadow-[#BD9FF5] p-8  rounded-2xl">
+            <div className="max-w-lg w-full space-y-8 sm:shadow-lg shadow-[#BD9FF5] p-8  rounded-2xl">
                 <div>
                     <h2 className="mt-6 text-center text-3xl font-extrabold text-[#BD9FF5]">
                         Create your account
@@ -128,15 +132,19 @@ const Register = () => {
                     <div>
                         <button
                             type="submit"
-                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#BD9FF5] hover:bg-[#FED12D] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#BD9FF5]"
-                        >
+                            className="group relative w-full flex justify-center  border border-transparent text-sm  bg-[#BD9FF5] hover:bg-[#FED12D] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#BD9FF5] px-8 py-3 rounded-md text-white font-bold transition-transform hover:scale-105 shadow-2xl">
                             Register
                         </button>
                     </div>
                 </form>
 
-                <div className="mt-6">
-                    <hr className="my-4 border-t border-gray-300" />
+                <div className="mt-1 flex items-center">
+                    <div className="flex-grow border-t border-gray-300"></div>
+                    <span className="mx-4 text-gray-500">or</span>
+                    <div className="flex-grow border-t border-gray-300"></div>
+                </div>
+
+                <div className="mt-1">
                     <button
                         onClick={handleGoogleSignIn}
                         className="w-full flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"

@@ -45,20 +45,18 @@ const AuthProvider = ({children}) => {
         try {
             setLoading(true);
             const result = await createUserWithEmailAndPassword(auth, email, password);
-            
-            // First update the profile
-            const updatedProfile = await updateProfile(auth.currentUser, {
+          
+    
+            // Update the profile
+            await updateProfile(auth.currentUser, {
                 displayName: name,
-                photoURL: photoURL ,
+                photoURL: photoURL,
             });
-            setUser(updatedProfile.user);
-            
-            // Then set the user with updated profile
-                const updatedUser = auth.currentUser;
-            setUser(updatedUser);
-            
+    
+      
+    
             toast.success('Registration successful!');
-            return updatedUser;
+            return result.user;
         } catch (error) {
             toast.error(error.message);
             throw error;
@@ -66,6 +64,7 @@ const AuthProvider = ({children}) => {
             setLoading(false);
         }
     };
+    
 
 
 
@@ -132,7 +131,6 @@ const AuthProvider = ({children}) => {
 
 
 
-
     // ___________________________Add forget password function
 
     const resetPassword = async (email) => {
@@ -155,9 +153,10 @@ const AuthProvider = ({children}) => {
 
     // ___________________________Add useEffect to monitor auth state
 
-    React.useEffect(() => {
+    React.useEffect( () => {
         const unsubscribe = auth.onAuthStateChanged((currentUser) => {
             setUser(currentUser);
+         
             setLoading(false);
         });
 

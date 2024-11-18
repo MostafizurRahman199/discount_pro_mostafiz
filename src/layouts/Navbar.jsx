@@ -1,247 +1,286 @@
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { useFirebaseAuth } from '../Auth/AuthProvider';
-import { FaHome, FaFontAwesome, FaUserCircle, FaCode } from 'react-icons/fa';
+import { FaHome, FaFontAwesome, FaUserCircle, FaCode, FaTags, FaUser, FaInfoCircle } from 'react-icons/fa';
+
 
 const Navbar = () => {
-  const { user, logOut, loading } = useFirebaseAuth();
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const handleLogOut = async () => {
+  
+  // ___________________________hooks
+
+  const location = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [activeLink, setActiveLink] = React.useState(location.pathname);
+  const { user, logOut, loading } = useFirebaseAuth();
+
+
+
+
+
+
+  // ___________________________useEffect update activeLink
+
+  React.useEffect(() => {
+    setActiveLink(location.pathname);
+  }, [location.pathname]);
+
+
+
+
+  // ___________________________loading check
+
+  if (loading) {
+    return <div className="h-16" />; 
+  }
+
+
+
+
+  // ___________________________link style helper
+
+  const getLinkStyle = (path) => `
+    relative px-3 py-2 text-sm font-medium transition-colors duration-200
+    ${activeLink === path 
+      ? 'text-[#8446f8]' 
+      : 'text-gray-700 hover:text-[#8446f8]'
+    }
+    before:absolute before:bottom-0 before:left-0 before:w-full before:h-0.5 
+    before:bg-[#8446f8] before:transform before:scale-x-0 before:transition-transform
+    before:duration-300 hover:before:scale-x-100
+    ${activeLink === path ? 'before:scale-x-100' : ''}
+  `;
+
+
+
+
+  // ___________________________logout handler
+
+
+  const handleLogout = async () => {
     try {
       await logOut();
+     
     } catch (error) {
       console.error('Logout error:', error);
     }
   };
 
-  // Custom NavLink component with active styles
-  const NavItem = ({ to, children }) => {
-    return (
-      <NavLink
-        to={to}
-        className={({ isActive }) =>
-          `flex items-center space-x-1 py-2 px-3 rounded-lg transition-all duration-200 group
-          ${isActive 
-            ? 'text-purple-600 bg-purple-50 font-medium' 
-            : 'text-gray-700 hover:text-purple-600 hover:bg-purple-50/50'
-          }`
+
+
+
+
+  // ___________________________getProfileImage helper function
+
+  const getProfileImage = (user) => {
+    if (user?.photoURL) {
+        return user?.photoURL;
+    }
+    
+    if (user?.providerData) {
+        for (const provider of user.providerData) {
+            if (provider.photoURL) {
+                return provider.photoURL;
+            }
         }
-      >
-        {children}
-      </NavLink>
+    }
+    
+    return 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
+  };
+
+
+
+
+
+
+
+
+  // ___________________________ProfileImage component
+
+  const ProfileImage = ({ user }) => {
+    const [imageError, setImageError] = React.useState(false);
+    const imageUrl = !imageError ? getProfileImage(user) : 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
+
+    return (
+        <img
+            className="h-8 w-8 rounded-full object-cover border border-gray-200"
+            src={imageUrl}
+            alt={user.displayName || 'Profile'}
+            onError={() => setImageError(true)}
+        />
     );
   };
 
-  // Mobile NavLink component
-  const MobileNavItem = ({ to, children, onClick }) => {
-    return (
-      <NavLink
-        to={to}
-        onClick={onClick}
-        className={({ isActive }) =>
-          `flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200
-          ${isActive 
-            ? 'text-purple-600 bg-purple-50' 
-            : 'text-gray-700 hover:text-purple-600 hover:bg-purple-50'
-          }`
-        }
-      >
-        {children}
-      </NavLink>
-    );
-  };
 
-  if (loading) {
-    return (
-      <nav className="bg-white shadow-lg">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <div className="flex-shrink-0">
-              <Link to="/" className="text-xl font-bold text-purple-600">
-                Discount PRO
-              </Link>
-            </div>
-            <div className="flex items-center">
-              <div className="animate-pulse bg-gray-200 h-8 w-32 rounded"></div>
-            </div>
-          </div>
-        </div>
-      </nav>
-    );
-  }
+
+
+
 
   return (
-    <nav className="bg-white shadow-lg sticky top-0 z-50">
+    <nav className="bg-white/80 backdrop-blur-md  shadow-lg w-full top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
+          {/* Logo - Updated for better mobile display */}
           <div className="flex-shrink-0">
-            <Link 
-              to="/" 
-              className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent hover:opacity-90 transition-opacity"
-            >
+            <Link to="/" className="flex items-center space-x-2">
+              <img
+                className="h-8 w-auto sm:h-12"
+                src="https://t4.ftcdn.net/jpg/03/02/68/11/360_F_302681154_9HOWdvGLtCKpfwO5B85yESszG7MfmlUl.jpg"
+                alt="Logo"
+              />
+              <span className="text-lg sm:text-xl font-bold text-blue-600 truncate">
               Discount PRO
+              </span>
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="flex md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-purple-600 hover:bg-purple-50 transition-colors duration-200 focus:outline-none"
+          {/* Navigation Links - Center */}
+          <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
+            <Link to="/" className={getLinkStyle('/')} onClick={() => setActiveLink('/')}>
+              <FaHome className="inline-block mr-1" /> Home
+            </Link>
+            <Link to="/brands" className={getLinkStyle('/brands')} onClick={() => setActiveLink('/brands')}>
+              <FaTags className="inline-block mr-1" /> Brands
+            </Link>
+           {
+            user && (
+              <Link to="/my-profile" className={getLinkStyle('/my-profile')} onClick={() => setActiveLink('/my-profile')}>
+                <FaUser className="inline-block mr-1" /> Profile
+              </Link>
+           )}
+            <Link to="/about" className={getLinkStyle('/about')} onClick={() => setActiveLink('/about')}>
+              <FaInfoCircle className="inline-block mr-1" /> About
+            </Link>
+          </div>
+
+
+
+          {/* User Profile/Login Button - Updated for mobile */}
+          <div className="hidden md:flex items-center gap-2">
+            {user ? (
+              <div className="flex items-center gap-4">
+                <button className="flex items-center space-x-2">
+                  <ProfileImage user={user} />
+                  <span className="hidden lg:block text-sm font-medium text-gray-700">
+                    {user.displayName || user.email?.split('@')[0] || 'User'}
+                  </span>
+                </button>
+             
+  
+                <button
+                  onClick={handleLogout}
+                  className="bg-[#FED12D]  px-6 py-2 rounded-3xl text-white font-semibold transition-transform hover:scale-105 shadow-2xl  hover:bg-[#BD9FF5] "
+                    >
+                      Logout
+                    </button>
+
+              </div>
+            ) : (
+              <>
+              <Link
+                to="/login"
+               className=" px-6 py-2 rounded-3xl text-white font-bold transition-transform hover:scale-105 shadow-2xl bg-[#BD9FF5] "
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="bg-[#FED12D]    px-6 py-2 rounded-3xl text-white font-bold transition-transform hover:scale-105 shadow-2xl"
+              >
+                Register
+              </Link>
+              </>
+            )}
+          </div>
+
+
+
+
+          {/* Mobile menu button - Updated styling */}
+          <div className="md:hidden flex items-center ml-2">
+            <button 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
             >
+              <span className="sr-only">Open main menu</span>
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                {isMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
           </div>
-
-          {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center space-x-2">
-            <NavItem to="/">
-              <FaHome className="group-hover:scale-110 transition-transform duration-200" />
-              <span>Home</span>
-            </NavItem>
-            <NavItem to="/brands">
-              <FaFontAwesome className="group-hover:scale-110 transition-transform duration-200" />
-              <span>Brands</span>
-            </NavItem>
-            {user && (
-              <NavItem to="/my-profile">
-                <FaUserCircle className="group-hover:scale-110 transition-transform duration-200" />
-                <span>My Profile</span>
-              </NavItem>
-            )}
-            <NavItem to="/about">
-              <FaCode className="group-hover:scale-110 transition-transform duration-200" />
-              <span>About Dev</span>
-            </NavItem>
-          </div>
-
-          {/* Desktop Auth Section */}
-          <div className="hidden md:flex items-center space-x-4">
-            {user ? (
-              <div className="flex items-center space-x-4">
-                <Link to="/my-profile">
-                  <img 
-                    src={user.photoURL}
-                    alt={user.displayName || 'User'} 
-                    className="w-8 h-8 rounded-full hover:ring-2 hover:ring-purple-500 transition-all duration-200"
-                    onError={(e) => {
-                      e.target.src = 'https://i.ibb.co/238dYyx/user.png';
-                    }}
-                  />
-                </Link>
-                <span className="text-sm text-gray-700">
-                  {user.displayName || 'User'}
-                </span>
-                <button
-                  onClick={handleLogOut}
-                  className="bg-[#FED12D] text-white px-4 py-2 rounded hover:bg-[#fac404]"
-                >
-                  Log Out
-                </button>
-              </div>
-            ) : (
-              <div className="space-x-2">
-                <Link
-                  to="/login"
-                  className="bg-[#BD9FF5] text-white px-4 py-2 rounded hover:bg-[#BD9FF5]"
-                >
-                  Login
-                </Link>
-                <Link
-                  to="/register"
-                  className="bg-[#FED12D] text-white px-4 py-2 rounded hover:bg-[#FED12D]"
-                >
-                  Register
-                </Link>
-              </div>
-            )}
-          </div>
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
+
+
+
+   
       <div 
-        className={`${
-          isMenuOpen ? 'block' : 'hidden'
-        } md:hidden bg-white border-t border-gray-100`}
+        className={`
+          md:hidden fixed  top-16 bg-white shadow-lg
+          transform transition-all duration-300 ease-in-out z-100
+          ${isMobileMenuOpen ? 'translate-y-0 opacity-100 visible' : '-translate-y-full opacity-0 invisible'}
+        `}
       >
-        <div className="px-2 pt-2 pb-3 space-y-1">
-          <MobileNavItem to="/" onClick={() => setIsMenuOpen(false)}>
-            <FaHome />
-            <span>Home</span>
-          </MobileNavItem>
-          <MobileNavItem to="/brands" onClick={() => setIsMenuOpen(false)}>
-            <FaFontAwesome />
-            <span>Brands</span>
-          </MobileNavItem>
-          {user && (
-            <MobileNavItem to="/my-profile" onClick={() => setIsMenuOpen(false)}>
-              <FaUserCircle />
-              <span>My Profile</span>
-            </MobileNavItem>
+      
+        <div className="absolute inset-0 bg-blue-50" />
+        
+      
+        <div className="relative px-4 pt-2 pb-3 space-y-2">
+          <Link 
+            to="/" 
+            className={`block ${getLinkStyle('/')}`}
+            onClick={() => {
+              setActiveLink('/');
+              setIsMobileMenuOpen(false);
+            }}
+          >
+            <FaHome className="inline-block mr-1" /> Home
+          </Link>
+          <Link 
+            to="/treatments" 
+            className={`block ${getLinkStyle('/treatments')}`}
+            onClick={() => {
+              setActiveLink('/treatments');
+              setIsMobileMenuOpen(false);
+            }}
+          >
+            <FaTags className="inline-block mr-1" /> All Treatments
+          </Link>
+          <Link 
+            to="/profile" 
+            className={`block ${getLinkStyle('/profile')}`}
+            onClick={() => {
+              setActiveLink('/profile');
+              setIsMobileMenuOpen(false);
+            }}
+          >
+            <FaUser className="inline-block mr-1" /> Profile
+          </Link>
+          <Link 
+            to="/my-appointments" 
+            className={`block ${getLinkStyle('/my-appointments')}`}
+            onClick={() => {
+              setActiveLink('/my-appointments');
+              setIsMobileMenuOpen(false);
+            }}
+          >
+            My Appointments
+          </Link>
+          
+          {/* Add login button for mobile */}
+          {!user && (
+            <Link 
+              to="/login" 
+              className="block w-full text-center bg-blue-600 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Login
+            </Link>
           )}
-          <MobileNavItem to="/about" onClick={() => setIsMenuOpen(false)}>
-            <FaCode />
-            <span>About Dev</span>
-          </MobileNavItem>
-
-          {/* Mobile Auth Section */}
-          <div className="px-4 py-2 border-t border-gray-100 mt-2">
-            {user ? (
-              <div className="space-y-3">
-                <Link to="/my-profile" className="flex items-center space-x-3">
-                  <img 
-                    src={user.photoURL || 'https://i.ibb.co/238dYyx/user.png'}
-                    alt={user.displayName || 'User'} 
-                    className="w-8 h-8 rounded-full hover:ring-2 hover:ring-purple-500 transition-all duration-200"
-                    onError={(e) => {
-                      e.target.src = 'https://i.ibb.co/238dYyx/user.png';
-                    }}
-                  />
-                  <span className="text-sm text-gray-700">{user.displayName || 'User'}</span>
-                </Link>
-                <button
-                  onClick={() => {
-                    handleLogOut();
-                    setIsMenuOpen(false);
-                  }}
-                  className="w-full bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300"
-                >
-                  Log Out
-                </button>
-              </div>
-            ) : (
-              <div className="space-y-2">
-                <Link
-                  to="/login"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="block w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white px-4 py-2 rounded-lg text-center hover:shadow-lg transition-all duration-300"
-                >
-                  Login
-                </Link>
-                <Link
-                  to="/register"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="block w-full bg-gradient-to-r from-gray-600 to-gray-700 text-white px-4 py-2 rounded-lg text-center hover:shadow-lg transition-all duration-300"
-                >
-                  Register
-                </Link>
-              </div>
-            )}
-          </div>
         </div>
       </div>
 
-      {/* Welcome Message */}
       {user && (
         <div className="bg-gradient-to-r from-purple-100 to-blue-100 py-2 text-center">
           <p className="text-purple-800 font-medium">
@@ -250,7 +289,7 @@ const Navbar = () => {
         </div>
       )}
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

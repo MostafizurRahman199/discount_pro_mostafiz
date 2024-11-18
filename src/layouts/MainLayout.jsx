@@ -13,7 +13,9 @@ const MainLayout = () => {
     <div className='font-poppins'>
       <ToastContainer />
       <Navbar />
+    
       <Outlet />
+    
       <Footer />
     </div>
   )

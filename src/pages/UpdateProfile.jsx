@@ -36,8 +36,8 @@ const UpdateProfile = () => {
 
     return (
         <div className="min-h-screen pt-20 px-4 my-8">
-            <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8">
-                <h2 className="text-xl font-bold mb-4">Update Profile</h2>
+            <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8">
+                <h2 className="text-xl font-bold mb-4 text-[#FED12D]">Update Profile</h2>
                 <form onSubmit={handleUpdate}>
                     <div className="mb-4">
                         <label className="block text-gray-700 mb-2">Display Name</label>
@@ -45,7 +45,7 @@ const UpdateProfile = () => {
                             type="text"
                             value={formData.displayName}
                             onChange={(e) => setFormData({...formData, displayName: e.target.value})}
-                            className="w-full px-3 py-2 border rounded-md"
+                            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#BD9FF5]"
                         />
                     </div>
                     <div className="mb-4">
@@ -54,12 +54,12 @@ const UpdateProfile = () => {
                             type="url"
                             value={formData.photoURL}
                             onChange={(e) => setFormData({...formData, photoURL: e.target.value})}
-                            className="w-full px-3 py-2 border rounded-md"
+                            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#BD9FF5]"
                         />
                     </div>
                     <button
                         type="submit"
-                        className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+                        className="bg-[#BD9FF5]  hover:bg-[#FED12D] px-8 py-3 rounded-3xl text-white font-semibold transition-transform hover:scale-105 shadow-2xl"
                     >
                         Update Information
                     </button>
