@@ -45,14 +45,12 @@ const WhyChooseUs = () => {
           <p className="text-gray-600 text-lg">What makes us different</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"   data-aos="fade-up">
           {features.map((feature, index) => (
             <div
               key={index}
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-              className="p-6 bg-white rounded-lg shadow-lg hover:transform 
-                         hover:-translate-y-2 transition-all duration-300"
+            
+              className="p-6 bg-white rounded-lg shadow-lg transform transition-transform duration-300 hover:translate-y-0 hover:scale-105"
             >
               <div className="text-4xl mb-4 text-[#BD9FF5]">{feature.icon}</div>
               <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useFirebaseAuth } from '../Auth/AuthProvider';
 
-import { FcGoogle } from 'react-icons/fc'; // Make sure to install react-icons
+import { FcGoogle } from 'react-icons/fc'; 
 import { toast } from 'react-toastify';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
@@ -13,7 +13,7 @@ const Login = () => {
   const { loginUser, googleSignIn } = useFirebaseAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || '/';
+  const from = location.state?.from || '/';
 
   const handleLogin = async (e) => {
     e.preventDefault();

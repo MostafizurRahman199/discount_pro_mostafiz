@@ -50,7 +50,7 @@ const Brands = () => {
     if (user) {
       navigate(`/brands/${brandId}`);
     } else {
-      navigate('/login');
+      navigate('/login', { state: { from: `/brands/${brandId}` } });
     }
   };
 
