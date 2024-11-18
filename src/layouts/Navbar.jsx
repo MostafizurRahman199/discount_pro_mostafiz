@@ -134,7 +134,7 @@ const Navbar = () => {
                 src={logo}
                 alt="Logo"
               />
-              <span className="text-lg text-md sm:text-3xl font-bold bg-gradient-to-r from-[#BD9FF5] to-[#FED12D] bg-clip-text text-transparent truncate">
+              <span className="text-3xl sm:text-sm md:text-md lg:text-3xl text-md font-bold bg-gradient-to-r from-[#BD9FF5] to-[#FED12D] bg-clip-text text-transparent truncate">
               Discount PRO
               </span>
             </Link>

@@ -1,7 +1,20 @@
 import React from 'react';
 import { FaTicketAlt } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { useFirebaseAuth } from '../../Auth/AuthProvider';
 
 const BrandSellCard = ({ brand }) => {
+  const {user}= useFirebaseAuth();
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    if(user){
+      navigate(`/brands/${brand._id}`);
+    }else{
+      navigate('/login', {state: {from: `/brands/${brand._id}`}});
+    }
+  }
+
   return (
     <div className="group relative bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
 
@@ -39,7 +52,7 @@ const BrandSellCard = ({ brand }) => {
             </span>
           </div>
           
-          <button className="bg-[#BD9FF5] hover:bg-[#BD9FF5]/90 text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300">
+          <button onClick={handleNavigate} className="bg-[#BD9FF5] hover:bg-[#BD9FF5]/90 text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300">
             View Deals
           </button>
         </div>

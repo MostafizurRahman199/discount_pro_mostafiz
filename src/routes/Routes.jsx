@@ -14,6 +14,7 @@ import BrandDetails from "../pages/BrandDetails";
 import PrivateRoute from "./PrivateRoute";
 import UpdateProfile from "../pages/UpdateProfile";
 import ErrorPage from "../pages/ErrorPage";
+import About from "../pages/About";
 
 const router = createBrowserRouter([    
     {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
             {
                 path: "/brands",
                 element: <Brands />,
+            },
+            {
+                path: "/about",
+                element: <About />,
             },
             {
                 path: "/login",

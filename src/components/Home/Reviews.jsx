@@ -47,13 +47,13 @@ const Reviews = () => {
         gradient={true}
         speed={50}
         pauseOnHover={true}
-        className="py-2 md:py-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] "
+        className=" py-2 md:py-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] md:h-[400px]"
       >
         <div className="flex gap-6">
           {reviews.map((review, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg shadow-lg border border-[#BD9FF5] p-6 flex flex-col items-center text-center transition-transform hover:scale-105 mx-2"
+              className="bg-white rounded-3xl shadow-lg border border-[#BD9FF5]  p-6 flex flex-col items-center text-center transition-transform hover:scale-105 mx-2 "
               style={{
                 minWidth: "280px",
                 maxWidth: "280px",
