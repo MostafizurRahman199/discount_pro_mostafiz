@@ -36,7 +36,7 @@ const UpdateProfile = () => {
 
     return (
         <div className="min-h-screen pt-20 px-4 my-8">
-            <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8">
+            <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8 " data-aos='zoom-in-left'> 
                 <h2 className="text-xl font-bold mb-4 text-[#FED12D]">Update Profile</h2>
                 <form onSubmit={handleUpdate}>
                     <div className="mb-4">

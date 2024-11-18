@@ -155,7 +155,7 @@ const Navbar = () => {
               </Link>
            )}
             <Link to="/about" className={getLinkStyle('/about')} onClick={() => setActiveLink('/about')}>
-              <FaInfoCircle className="inline-block mr-1" /> About
+              <FaCode className="inline-block mr-1" /> About Dev
             </Link>
           </div>
 

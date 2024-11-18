@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 import { useFirebaseAuth } from '../Auth/AuthProvider';
+import Aos from 'aos';
 
 
 const RatingStars = ({ rating }) => {
@@ -24,27 +25,18 @@ const RatingStars = ({ rating }) => {
 
 const Brands = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [brands, setBrands] = useState([]);
-  const [loading, setLoading] = useState(true);
+
   const navigate = useNavigate();
   const { user } = useFirebaseAuth();
+  const data = useLoaderData();
+  const brands = data.brands;
 
-  // Fetch brands data
+
   useEffect(() => {
-    const fetchBrands = async () => {
-      try {
-        const response = await fetch('/brands.json');
-        const data = await response.json();
-        setBrands(data.brands);
-      } catch (error) {
-        console.error('Error fetching brands:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchBrands();
+    Aos.init({ duration: 1000 });
   }, []);
+
+
 
   const handleViewCoupons = (brandId) => {
     if (user) {
@@ -54,23 +46,16 @@ const Brands = () => {
     }
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-[#BD9FF5]"></div>
-      </div>
-    );
-  }
+
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      {/* Page Title */}
-      {/* <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8" 
-          style={{ color: '#BD9FF5' }}>
-        Featured Brands
-      </h1> */}
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8"    
 
-      <div className="text-center mb-12" >
+    >
+ 
+
+    <div data-aos="fade-down">
+    <div className="text-center mb-12" >
         <h2 className="text-4xl md:text-5xl font-bold mb-4">
           <span className="text-[#BD9FF5]">Featured</span>{' '}
           <span className="text-[#FED12D]">Brands</span>
@@ -88,18 +73,23 @@ const Brands = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
+    </div>
 
       {/* Brands Grid */}
-      <div className="space-y-6">
-        {brands
-          .filter(brand => 
+      <div className="space-y-6"     
+ 
+      >
+        {brands?.filter(brand => 
             brand.brand_name.toLowerCase().includes(searchTerm.toLowerCase())
           )
           .map(brand => (
             <div key={brand._id} 
                  className="p-4 sm:p-6 border rounded-lg shadow-md 
                           flex flex-col sm:flex-row items-center gap-4 sm:gap-6
-                          hover:shadow-lg transition-shadow duration-300">
+                          hover:shadow-lg transition-shadow duration-300" 
+                          data-aos="fade-up"   
+                          data-aos-anchor-placement="center-bottom"  
+                          >
               {/* Logo and Rating */}
               <div className="w-full sm:w-24 flex flex-col items-center">
                 <img 

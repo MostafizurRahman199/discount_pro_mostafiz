@@ -13,6 +13,7 @@ import Brands from "../pages/Brands";
 import BrandDetails from "../pages/BrandDetails";
 import PrivateRoute from "./PrivateRoute";
 import UpdateProfile from "../pages/UpdateProfile";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([    
     {
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
             {
                 path: "/brands",
                 element: <Brands />,
+                loader: () => fetch('/brands.json'),
             },
             {
                 path: "/brands/:id",
@@ -69,6 +71,10 @@ const router = createBrowserRouter([
                     <UpdateProfile />
                 </PrivateRoute>
                ),
+            },
+            {
+                path: "*",
+                element: <ErrorPage />,
             },
             
            

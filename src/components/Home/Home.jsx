@@ -4,6 +4,7 @@ import TopBrands from './TopBrands'
 import BrandSell from './BrandSell'
 import FeaturedCategories from './FeaturedCategories'
 import WhyChooseUs from './WhyChooseUs'
+import Reviews from './Reviews'
 
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
         <BrandSell />
         <FeaturedCategories />
         <WhyChooseUs />
+        <Reviews />
     </div>
   )
 }

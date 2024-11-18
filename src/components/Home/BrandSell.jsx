@@ -8,7 +8,7 @@ const BrandSell = () => {
   const [brands, setBrands] = useState([]);
 
   useEffect(() => {
-    // Initialize AOS
+   
     AOS.init({
       duration: 1000,
       once: true

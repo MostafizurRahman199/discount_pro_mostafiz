@@ -5,12 +5,18 @@ import { useFirebaseAuth  } from '../Auth/AuthProvider';
 import { FcGoogle } from 'react-icons/fc';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { toast, ToastContainer } from 'react-toastify';
+import Aos from 'aos';
+import { useEffect } from 'react';
 
 const Register = () => {
     const navigate = useNavigate();
     const { registerUser, googleSignIn, setUser } = useFirebaseAuth();
     const [passwordError, setPasswordError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+
+    useEffect(() => {
+        Aos.init({ duration: 1000 });
+      }, []);
     
     const [formData, setFormData] = useState({
         name: '',
@@ -68,7 +74,7 @@ const Register = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-lg w-full space-y-8 sm:shadow-lg shadow-[#BD9FF5] p-8  rounded-2xl">
+            <div className="max-w-lg w-full space-y-8 sm:shadow-lg shadow-[#BD9FF5] p-8  rounded-2xl" data-aos="fade-up">
                 <div>
                     <h2 className="mt-6 text-center text-3xl font-extrabold text-[#BD9FF5]">
                         Create your account

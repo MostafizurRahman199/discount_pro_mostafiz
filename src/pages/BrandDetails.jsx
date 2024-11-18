@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect,  } from 'react';
 import { useParams } from 'react-router-dom';
 import { FaStar, FaCopy } from 'react-icons/fa';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import toast, { Toaster } from 'react-hot-toast';
-
+import Aos from 'aos';
 import { useFirebaseAuth } from '../Auth/AuthProvider';
 
 const BrandDetails = () => {
@@ -28,6 +28,10 @@ const BrandDetails = () => {
 
     fetchBrandDetails();
   }, [id]);
+
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
 
   const handleCopySuccess = () => {
     toast.success('Coupon code copied successfully!', {
@@ -104,7 +108,7 @@ const BrandDetails = () => {
       </div>
 
       {/* Coupons Grid card */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="flip-right">
         {brand.coupons.map((coupon, index) => (
           <div 
             key={index}

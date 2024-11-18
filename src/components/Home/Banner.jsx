@@ -4,12 +4,17 @@ import { Link } from "react-router-dom";
 import banner12 from '../../assets/banner12.jpg'
 import banner13 from '../../assets/banner13.jpg'
 import banner14 from '../../assets/bannerAi.png'
+import { useEffect } from "react";
+import Aos from "aos";
  
 export default function Banner() {
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
 
 
   return (
-    <div className="h-[300px] md:h-[500px]">
+    <div className="h-[300px] md:h-[500px]"  data-aos="fade-left">
       <Carousel className="h-full">
         <div className="relative h-full w-full">
           <img

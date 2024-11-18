@@ -5,6 +5,8 @@ import { useFirebaseAuth } from '../Auth/AuthProvider';
 import { FcGoogle } from 'react-icons/fc'; 
 import { toast } from 'react-toastify';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import Aos from 'aos';
+import { useEffect } from 'react';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -14,6 +16,10 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from || '/';
+
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -38,7 +44,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-lg w-full space-y-8 sm:shadow-lg shadow-[#BD9FF5] p-8  rounded-2xl">
+      <div className="max-w-lg w-full space-y-8 sm:shadow-lg shadow-[#BD9FF5] p-8  rounded-2xl" data-aos="zoom-in">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-[#BD9FF5]">
             Login to your account
