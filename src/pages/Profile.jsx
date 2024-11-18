@@ -26,7 +26,7 @@ const Profile = () => {
                         <img
                             src={getProfileImage(user)}
                             alt="Profile"
-                            className="w-30 h-30 rounded-full  object-cover border-4 border-white"
+                            className="max-w-24 max-h-24 rounded-full  object-cover border-4 border-white"
                             onError={(e) => {
                                 e.target.src = 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
                                 e.target.onerror = null;

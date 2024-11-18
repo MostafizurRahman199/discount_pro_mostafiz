@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import banner12 from '../../assets/banner12.jpg'
 import banner13 from '../../assets/banner13.jpg'
+import banner14 from '../../assets/bannerAi.png'
  
 export default function Banner() {
 
@@ -25,6 +26,14 @@ export default function Banner() {
             src={banner13}
             alt="image 2"
             className="h-full w-full object-cover object-center"
+          />
+     
+        </div>
+        <div className="relative h-full w-full">
+          <img
+            src={banner14}
+            alt="image 2"
+            className="h-full w-full object-contain object-cover sm:object-center"
           />
      
         </div>

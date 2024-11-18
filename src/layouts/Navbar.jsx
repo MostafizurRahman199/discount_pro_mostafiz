@@ -1,7 +1,9 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { useFirebaseAuth } from '../Auth/AuthProvider';
-import { FaHome, FaFontAwesome, FaUserCircle, FaCode, FaTags, FaUser, FaInfoCircle } from 'react-icons/fa';
+import { FaHome, FaFontAwesome, FaUserCircle, FaCode, FaTags, FaUser, FaInfoCircle, FaUserPlus, FaSignInAlt } from 'react-icons/fa';
+import { toast } from 'react-toastify';
+import logo from '../assets/logoNav.png'
 
 
 const Navbar = () => {
@@ -13,6 +15,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [activeLink, setActiveLink] = React.useState(location.pathname);
   const { user, logOut, loading } = useFirebaseAuth();
+  const navigate = useNavigate();
 
 
 
@@ -60,6 +63,9 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await logOut();
+   
+      // toast.success('Logout successful!');
+      navigate('/');
      
     } catch (error) {
       console.error('Logout error:', error);
@@ -117,18 +123,18 @@ const Navbar = () => {
 
 
   return (
-    <nav className="bg-white/80 backdrop-blur-md  shadow-lg w-full top-0 z-50">
+    <nav className="bg-white/80 backdrop-blur-md fixed  shadow-lg w-full top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo - Updated for better mobile display */}
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center space-x-2">
               <img
-                className="h-8 w-auto sm:h-12"
-                src="https://t4.ftcdn.net/jpg/03/02/68/11/360_F_302681154_9HOWdvGLtCKpfwO5B85yESszG7MfmlUl.jpg"
+                className="h-6 w-auto sm:h-10"
+                src={logo}
                 alt="Logo"
               />
-              <span className="text-lg sm:text-xl font-bold text-blue-600 truncate">
+              <span className="text-lg text-md sm:text-3xl font-bold bg-gradient-to-r from-[#BD9FF5] to-[#FED12D] bg-clip-text text-transparent truncate">
               Discount PRO
               </span>
             </Link>
@@ -238,45 +244,61 @@ const Navbar = () => {
             <FaHome className="inline-block mr-1" /> Home
           </Link>
           <Link 
-            to="/treatments" 
-            className={`block ${getLinkStyle('/treatments')}`}
+            to="/brands" 
+            className={`block ${getLinkStyle('/brands')}`}
             onClick={() => {
-              setActiveLink('/treatments');
+              setActiveLink('/brands');
               setIsMobileMenuOpen(false);
             }}
           >
-            <FaTags className="inline-block mr-1" /> All Treatments
+            <FaTags className="inline-block mr-1" /> Brands
           </Link>
-          <Link 
-            to="/profile" 
-            className={`block ${getLinkStyle('/profile')}`}
+       { user && <Link 
+            to="/my-profile" 
+            className={`block ${getLinkStyle('/my-profile')}`}
             onClick={() => {
-              setActiveLink('/profile');
+              setActiveLink('/my-profile');
               setIsMobileMenuOpen(false);
             }}
           >
             <FaUser className="inline-block mr-1" /> Profile
-          </Link>
+          </Link>}
           <Link 
-            to="/my-appointments" 
-            className={`block ${getLinkStyle('/my-appointments')}`}
+            to="/about" 
+            className={`block ${getLinkStyle('/about')}`}
             onClick={() => {
-              setActiveLink('/my-appointments');
+              setActiveLink('/about');
               setIsMobileMenuOpen(false);
             }}
           >
-            My Appointments
+            <FaInfoCircle className="inline-block mr-1" /> About
           </Link>
           
           {/* Add login button for mobile */}
           {!user && (
             <Link 
-              to="/login" 
-              className="block w-full text-center bg-blue-600 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Login
-            </Link>
+            to="/login" 
+            className={`block ${getLinkStyle('/login')}`}
+            onClick={() => {
+              setActiveLink('/login');
+              setIsMobileMenuOpen(false);
+            }}
+          >
+            <FaSignInAlt className="inline-block mr-1" /> Login
+          </Link>
+          )}
+
+          {!user && (
+             <Link 
+             to="/register" 
+             className={`block ${getLinkStyle('/register')}`}
+             onClick={() => {
+               setActiveLink('/register');
+               setIsMobileMenuOpen(false);
+             }}
+           >
+             <FaUserPlus className="inline-block mr-1" /> Register
+           </Link>
           )}
         </div>
       </div>

@@ -55,7 +55,7 @@ const AuthProvider = ({children}) => {
     
       
     
-            toast.success('Registration successful!');
+            // toast.success('Registration successful!');
             return result.user;
         } catch (error) {
             toast.error(error.message);
@@ -87,7 +87,7 @@ const AuthProvider = ({children}) => {
             // Set user state after profile update
             setUser(auth.currentUser);
             
-            toast.success('Successfully signed in with Google!');
+            // toast.success('Successfully signed in with Google!');
             return auth.currentUser;
         } catch (error) {
             toast.error(error.message);
@@ -137,7 +137,7 @@ const AuthProvider = ({children}) => {
         setLoading(true);
         try {
             await sendPasswordResetEmail(auth, email);
-            toast.success('Password reset email sent!');
+            // toast.success('Password reset email sent!');
         } catch (error) {
             toast.error(error.message);
             throw error;
