@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaPercent, FaUserShield, FaClock, FaHeadset } from 'react-icons/fa';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const WhyChooseUs = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  }, []);
+
   const features = [
     {
       icon: <FaPercent />,
@@ -28,7 +37,7 @@ const WhyChooseUs = () => {
   return (
     <div className="py-16 bg-gray-50 font-poppins">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12" data-aos="fade-down">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-[#BD9FF5]">Why</span>{' '}
             <span className="text-[#FED12D]">Choose Us</span>
@@ -40,6 +49,8 @@ const WhyChooseUs = () => {
           {features.map((feature, index) => (
             <div
               key={index}
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
               className="p-6 bg-white rounded-lg shadow-lg hover:transform 
                          hover:-translate-y-2 transition-all duration-300"
             >

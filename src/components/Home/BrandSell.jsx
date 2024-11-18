@@ -1,11 +1,19 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import BrandSellCard from './BrandSellCard';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const BrandSell = () => {
   const [brands, setBrands] = useState([]);
 
   useEffect(() => {
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+
     fetch('/brands.json')
       .then(res => res.json())
       .then(data => {
@@ -16,7 +24,7 @@ const BrandSell = () => {
 
   return (
     <section className="container mx-auto px-4 py-16">
-      <div className="text-center mb-12">
+      <div className="text-center mb-12" data-aos="fade-down">
         <h2 className="text-4xl md:text-5xl font-bold mb-4">
           <span className="text-[#BD9FF5]">Hot</span>{' '}
           <span className="text-[#FED12D]">Deals</span>
@@ -25,8 +33,10 @@ const BrandSell = () => {
       </div>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-        {brands.map(brand => (
-          <BrandSellCard key={brand._id} brand={brand} />
+        {brands.map((brand, index) => (
+          <div key={brand._id} data-aos="fade-up" data-aos-delay={index * 100}>
+            <BrandSellCard brand={brand} />
+          </div>
         ))}
       </div>
     </section>

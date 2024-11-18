@@ -23,6 +23,13 @@
             "expiry_date": "2024-06-15",
             "condition": "No minimum purchase required",
             "coupon_type": "Free Shipping"
+          },
+          {
+            "coupon_code": "APPAREL40",
+            "description": "40% off on all apparel",
+            "expiry_date": "2024-05-15",
+            "condition": "Valid on regular-priced items only",
+            "coupon_type": "Percentage Discount"
           }
         ]
       },
@@ -41,6 +48,20 @@
             "description": "$50 off on Prime membership",
             "expiry_date": "2024-04-30",
             "condition": "New Prime members only",
+            "coupon_type": "Fixed Amount"
+          },
+          {
+            "coupon_code": "FRESH25",
+            "description": "25% off on Amazon Fresh orders",
+            "expiry_date": "2024-05-31",
+            "condition": "Prime members only",
+            "coupon_type": "Percentage Discount"
+          },
+          {
+            "coupon_code": "KINDLE10",
+            "description": "$10 off on Kindle books",
+            "expiry_date": "2024-06-30",
+            "condition": "Minimum purchase of $30",
             "coupon_type": "Fixed Amount"
           }
         ]
@@ -80,6 +101,20 @@
             "expiry_date": "2024-05-01",
             "condition": "Valid on purchases above $800",
             "coupon_type": "Fixed Amount"
+          },
+          {
+            "coupon_code": "SMART50",
+            "description": "$50 off on smart home devices",
+            "expiry_date": "2024-05-15",
+            "condition": "Valid on select items",
+            "coupon_type": "Fixed Amount"
+          },
+          {
+            "coupon_code": "MEMBER20",
+            "description": "20% off on TV accessories",
+            "expiry_date": "2024-06-01",
+            "condition": "My Best Buy members only",
+            "coupon_type": "Percentage Discount"
           }
         ]
       },

@@ -7,34 +7,6 @@ const Navbar = () => {
   const { user, logOut, loading } = useFirebaseAuth();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const getProfileImage = (user) => {
-    console.log('User data:', user.photoURL);
-    
-    if (user?.photoURL) {
-      return user.photoURL;
-    }
-    
-    if (user?.providerData?.[0]?.photoURL) {
-      return user.providerData[0].photoURL;
-    }
-    
-    return  user.photoURL;
-  };
-
-  const ProfileImage = ({ user }) => {
-    const [imageError, setImageError] = React.useState(false);
-    const imageUrl = !imageError ?  (user.photoURL || getProfileImage(user)) : 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
-
-    return (
-      <img
-        className="h-8 w-8 rounded-full object-cover border border-gray-200"
-        src={imageUrl}
-        alt={user.displayName || 'Profile'}
-        onError={() => setImageError(true)}
-      />
-    );
-  };
-
   const handleLogOut = async () => {
     try {
       await logOut();
@@ -156,13 +128,22 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-4">
             {user ? (
               <div className="flex items-center space-x-4">
-                <ProfileImage user={user} />
+                <Link to="/my-profile">
+                  <img 
+                    src={user.photoURL}
+                    alt={user.displayName || 'User'} 
+                    className="w-8 h-8 rounded-full hover:ring-2 hover:ring-purple-500 transition-all duration-200"
+                    onError={(e) => {
+                      e.target.src = 'https://i.ibb.co/238dYyx/user.png';
+                    }}
+                  />
+                </Link>
                 <span className="text-sm text-gray-700">
-                  {user.email || 'No email available'}
+                  {user.displayName || 'User'}
                 </span>
                 <button
                   onClick={handleLogOut}
-                  className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                  className="bg-[#FED12D] text-white px-4 py-2 rounded hover:bg-[#fac404]"
                 >
                   Log Out
                 </button>
@@ -171,13 +152,13 @@ const Navbar = () => {
               <div className="space-x-2">
                 <Link
                   to="/login"
-                  className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
+                  className="bg-[#BD9FF5] text-white px-4 py-2 rounded hover:bg-[#BD9FF5]"
                 >
                   Login
                 </Link>
                 <Link
                   to="/register"
-                  className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700"
+                  className="bg-[#FED12D] text-white px-4 py-2 rounded hover:bg-[#FED12D]"
                 >
                   Register
                 </Link>
@@ -217,10 +198,17 @@ const Navbar = () => {
           <div className="px-4 py-2 border-t border-gray-100 mt-2">
             {user ? (
               <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <ProfileImage user={user} />
-                  <span className="text-sm text-gray-700">{user.email}</span>
-                </div>
+                <Link to="/my-profile" className="flex items-center space-x-3">
+                  <img 
+                    src={user.photoURL || 'https://i.ibb.co/238dYyx/user.png'}
+                    alt={user.displayName || 'User'} 
+                    className="w-8 h-8 rounded-full hover:ring-2 hover:ring-purple-500 transition-all duration-200"
+                    onError={(e) => {
+                      e.target.src = 'https://i.ibb.co/238dYyx/user.png';
+                    }}
+                  />
+                  <span className="text-sm text-gray-700">{user.displayName || 'User'}</span>
+                </Link>
                 <button
                   onClick={() => {
                     handleLogOut();

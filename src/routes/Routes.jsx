@@ -9,7 +9,8 @@ import ForgetPassword from "../pages/ForgetPassword";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../components/Home/Home";
 import Profile from "../pages/Profile";
-
+import Brands from "../pages/Brands";
+import BrandDetails from "../pages/BrandDetails";
 const router = createBrowserRouter([    
     {
         path: "/",
@@ -24,6 +25,19 @@ const router = createBrowserRouter([
             {
                 path: "/register",
                 element: <Register />,
+            },
+           
+            {
+                path: "/brands",
+                element: <Brands />,
+            },
+            {
+                path: "/brands/:id",
+                element: <BrandDetails />,
+            },
+            {
+                path: "/brands",
+                element: <Brands />,
             },
             {
                 path: "/login",

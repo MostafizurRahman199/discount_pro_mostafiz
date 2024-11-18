@@ -47,13 +47,14 @@ const AuthProvider = ({children}) => {
             const result = await createUserWithEmailAndPassword(auth, email, password);
             
             // First update the profile
-            await updateProfile(auth.currentUser, {
+            const updatedProfile = await updateProfile(auth.currentUser, {
                 displayName: name,
-                photoURL: photoURL || 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'
+                photoURL: photoURL ,
             });
+            setUser(updatedProfile.user);
             
             // Then set the user with updated profile
-            const updatedUser = auth.currentUser;
+                const updatedUser = auth.currentUser;
             setUser(updatedUser);
             
             toast.success('Registration successful!');
@@ -78,11 +79,17 @@ const AuthProvider = ({children}) => {
             const provider = new GoogleAuthProvider();
             const result = await signInWithPopup(auth, provider);
             
-            // Set user state after successful sign-in
-            setUser(result.user);
+            // Update profile to ensure all information is properly set
+            await updateProfile(auth.currentUser, {
+                displayName: result.user.displayName,
+                photoURL: result.user.photoURL,
+            });
+            
+            // Set user state after profile update
+            setUser(auth.currentUser);
             
             toast.success('Successfully signed in with Google!');
-            return result.user;
+            return auth.currentUser;
         } catch (error) {
             toast.error(error.message);
             throw error;
@@ -100,9 +107,20 @@ const AuthProvider = ({children}) => {
         setLoading(true);
         try {
             const result = await signInWithEmailAndPassword(auth, email, password);
-            setUser(result.user);
-            return result.user;
+            
+            // Update profile to ensure all information is properly set
+            await updateProfile(auth.currentUser, {
+                displayName: result.user.displayName,
+                photoURL: result.user.photoURL,
+            });
+            
+            // Set user state after profile update
+            setUser(auth.currentUser);
+            
+            toast.success('Successfully logged in!');
+            return auth.currentUser;
         } catch (error) {
+            toast.error(error.message.replace('Firebase: ', ''));
             throw error;
         } finally {
             setLoading(false);
@@ -158,7 +176,9 @@ const AuthProvider = ({children}) => {
         try {
             await auth.signOut();
             setUser(null);
+            toast.success('Successfully logged out!');
         } catch (error) {
+            toast.error('Failed to log out');
             throw error;
         } finally {
             setLoading(false);
