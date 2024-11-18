@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { FaStar, FaCopy } from 'react-icons/fa';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import toast, { Toaster } from 'react-hot-toast';
 
+import { useFirebaseAuth } from '../Auth/AuthProvider';
+
 const BrandDetails = () => {
   const [brand, setBrand] = useState(null);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
+  const { user ,} = useFirebaseAuth();
 
   useEffect(() => {
     const fetchBrandDetails = async () => {
@@ -37,6 +40,14 @@ const BrandDetails = () => {
     window.open(shopLink, '_blank');
   };
 
+  if (!user) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <h2 className="text-2xl text-gray-600">Please log in to view brand details.</h2>
+      </div>
+    );
+  }
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -57,7 +68,7 @@ const BrandDetails = () => {
     <div className="container mx-auto px-4 py-8 bg-gray-50 min-h-screen">
       <Toaster />
       
-      {/* Enhanced Brand Header */}
+      {/* Header card */}
       <div className="bg-white rounded-xl shadow-lg p-8 mb-8 transform hover:scale-[1.02] transition-all duration-300">
         <div className="flex flex-col md:flex-row items-center gap-8">
           <div className="relative group">
@@ -92,7 +103,7 @@ const BrandDetails = () => {
         </div>
       </div>
 
-      {/* Enhanced Coupons Grid */}
+      {/* Coupons Grid card */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {brand.coupons.map((coupon, index) => (
           <div 

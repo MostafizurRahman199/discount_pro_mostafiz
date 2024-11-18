@@ -201,6 +201,7 @@ const AuthProvider = ({children}) => {
         loginUser,
         logOut,  
         resetPassword,  
+        setUser
     }
 
     return (

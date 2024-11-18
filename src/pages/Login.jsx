@@ -38,9 +38,9 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
+      <div className="max-w-lg w-full space-y-8 shadow-lg shadow-[#BD9FF5] p-8  rounded-2xl">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-[#BD9FF5]">
             Login to your account
           </h2>
         </div>
@@ -50,7 +50,7 @@ const Login = () => {
               <input
                 type="email"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-[#BD9FF5] focus:border-[#BD9FF5] focus:z-10 sm:text-sm"
                 placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -60,7 +60,7 @@ const Login = () => {
               <input
                 type={showPassword ? "text" : "password"}
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm pr-10"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-[#BD9FF5] focus:border-[#BD9FF5] sm:text-sm pr-10"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -71,9 +71,9 @@ const Login = () => {
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? (
-                  <FaEyeSlash className="h-5 w-5 text-gray-400" />
+                    <FaEye className="h-5 w-5 text-gray-400" />
                 ) : (
-                  <FaEye className="h-5 w-5 text-gray-400" />
+                    <FaEyeSlash className="h-5 w-5 text-gray-400" />
                 )}
               </button>
             </div>
@@ -81,7 +81,7 @@ const Login = () => {
 
           <div className="flex items-center justify-between">
             <div className="text-sm">
-              <Link to="/forgot-password" className="font-medium text-indigo-600 hover:text-indigo-500">
+              <Link to="/forgot-password" className="font-medium text-[#BD9FF5] hover:text-[#FED12D]">
                 Forgot your password?
               </Link>
             </div>
@@ -90,7 +90,7 @@ const Login = () => {
           <div>
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#BD9FF5] hover:bg-[#FED12D] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#BD9FF5]"
             >
               Login
             </button>
@@ -98,6 +98,7 @@ const Login = () => {
         </form>
 
         <div className="mt-6">
+          <hr className="my-4 border-t border-gray-300" />
           <button
             onClick={handleGoogleSignIn}
             className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
@@ -109,7 +110,7 @@ const Login = () => {
 
         <p className="mt-2 text-center text-sm text-gray-600">
           Don't have an account?{' '}
-          <Link to="/register" className="font-medium text-indigo-600 hover:text-indigo-500">
+          <Link to="/register" className="font-medium text-[#BD9FF5] hover:text-[#FED12D]">
             Register here
           </Link>
         </p>

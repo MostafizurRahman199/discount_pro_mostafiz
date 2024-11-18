@@ -11,6 +11,9 @@ import Home from "../components/Home/Home";
 import Profile from "../pages/Profile";
 import Brands from "../pages/Brands";
 import BrandDetails from "../pages/BrandDetails";
+import PrivateRoute from "./PrivateRoute";
+import UpdateProfile from "../pages/UpdateProfile";
+
 const router = createBrowserRouter([    
     {
         path: "/",
@@ -33,7 +36,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "/brands/:id",
-                element: <BrandDetails />,
+                element: (
+                    <PrivateRoute>
+                        <BrandDetails />
+                    </PrivateRoute>
+                ),
             },
             {
                 path: "/brands",
@@ -48,8 +55,20 @@ const router = createBrowserRouter([
                 element: <ForgetPassword/>,
             },
             {
-                path: "/profile",
-                element: <Profile />,
+                path: "/my-profile",
+               element: (
+                <PrivateRoute>
+                    <Profile />
+                </PrivateRoute>
+               ),
+            },
+            {
+                path: "/update-profile",
+               element: (
+                <PrivateRoute>
+                    <UpdateProfile />
+                </PrivateRoute>
+               ),
             },
             
            
