@@ -67,6 +67,10 @@ const Login = () => {
     }
   };
 
+  const handleForgotPassword = () => {
+    navigate('/forgot-password', { state: { email } });
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-lg w-full space-y-8 sm:shadow-lg shadow-[#BD9FF5] p-8  rounded-2xl" data-aos="zoom-in">
@@ -112,9 +116,12 @@ const Login = () => {
 
           <div className="flex items-center justify-between">
             <div className="text-sm">
-              <Link to="/forgot-password" className="font-medium text-[#BD9FF5] hover:text-[#FED12D]">
+              <button
+                onClick={handleForgotPassword}
+                className="font-medium text-[#BD9FF5] hover:text-[#FED12D]"
+              >
                 Forgot your password?
-              </Link>
+              </button>
             </div>
           </div>
 
