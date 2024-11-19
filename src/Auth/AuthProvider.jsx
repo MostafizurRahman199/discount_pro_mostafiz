@@ -120,6 +120,16 @@ const AuthProvider = ({children}) => {
 
 
 
+    const updateUserProfile = async (displayName, photoURL ) => {
+       
+       try {
+        await updateProfile(auth.currentUser, { displayName, photoURL });
+        toast.success('Profile updated successfully');
+       } catch (error) {
+        // throw error;
+        toast.error('Failed to update profile');
+       } 
+    };
 
 
 
@@ -191,7 +201,8 @@ const AuthProvider = ({children}) => {
         loginUser,
         logOut,  
         resetPassword,  
-        setUser
+        setUser,
+        updateUserProfile
     }
 
     return (

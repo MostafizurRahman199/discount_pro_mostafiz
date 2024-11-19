@@ -4,6 +4,7 @@ import { useFirebaseAuth } from '../Auth/AuthProvider';
 import { FaHome, FaFontAwesome, FaUserCircle, FaCode, FaTags, FaUser, FaInfoCircle, FaUserPlus, FaSignInAlt } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import logo from '../assets/logoNav.png'
+import { Tooltip, Button } from "@material-tailwind/react";
 
 
 const Navbar = () => {
@@ -125,12 +126,17 @@ const Navbar = () => {
     console.log(imageUrl);
 
     return (
+
+      <Tooltip className='cursor-pointer bg-[#FED12D] text-white' content={`Hi ${user.displayName || 'User'}! `}>
+     
         <img
-            className="h-8 w-8 rounded-full object-cover border border-gray-200"
+            className="h-8 w-8 rounded-full object-cover border border-gray-200 cursor-pointer hover:scale-110 transition-transform duration-200"
             src={imageUrl}
             alt={user.displayName || 'Profile'}
+           
             onError={() => setImageError(true)}
-        />
+            />
+        </Tooltip>
     );
   };
 
@@ -296,7 +302,7 @@ const Navbar = () => {
 
              { user && <div className="flex justify-center"><ProfileImage user={user} /></div>} 
              { user && <div className=" text-gray-700 break-words">
-                    {user?.displayName?.slice(0, 10) || user.email?.split('@')[0] || 'User'}
+                    {user.email?.split('.')[0] || user.email || 'User'}
                   </div>} 
 
           {

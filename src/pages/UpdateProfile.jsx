@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useFirebaseAuth } from '../Auth/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Aos from 'aos';
-import { useEffect } from 'react';
 
 const UpdateProfile = () => {
-    const { user, setUser } = useFirebaseAuth();
+    const { user, setUser , updateUserProfile} = useFirebaseAuth();
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         displayName: user?.displayName || '',
@@ -16,27 +15,30 @@ const UpdateProfile = () => {
 
     useEffect(() => {
         Aos.init({ duration: 1000 });
-      }, []);
+    }, []);
 
     const handleUpdate = async (e) => {
         e.preventDefault();
         try {
-            await updateProfile(user, {
-                displayName: formData.displayName,
-                photoURL: formData.photoURL
-            });
-            
+            if (!user) {
+                throw new Error("User is not authenticated");
+            }
+
+            console.log("Updating profile for user:", user);
+
+            await updateUserProfile(formData.displayName, formData.photoURL);
+
             setUser({
                 ...user,
                 displayName: formData.displayName,
                 photoURL: formData.photoURL
             });
 
-            toast.success('Profile updated successfully');
+            // toast.success('Profile updated successfully');
             navigate('/my-profile');
         } catch (error) {
             toast.error('Failed to update profile');
-            console.error(error);
+            // console.error("Error updating profile:", error);
         }
     };
 

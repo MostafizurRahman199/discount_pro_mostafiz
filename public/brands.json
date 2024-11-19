@@ -36,7 +36,7 @@
       {
         "_id": "b002",
         "brand_name": "Amazon",
-        "rating": 4.9,
+        "rating": 5.0,
         "description": "World's largest e-commerce platform offering millions of products across categories.",
         "brand_logo": "https://www.shutterstock.com/image-vector/nuremberg-germany-december-23th-2023-600nw-2404360865.jpg",
         "shop_link": "https://www.amazon.com",
@@ -197,7 +197,7 @@
       {
         "_id": "b009",
         "brand_name": "Uber Eats",
-        "rating": 4.3,
+        "rating": 3.5,
         "description": "Food delivery platform connecting restaurants with hungry customers.",
         "brand_logo": "https://logos-world.net/wp-content/uploads/2020/11/Uber-Eats-Logo.png",
         "shop_link": "https://www.ubereats.com",
@@ -216,7 +216,7 @@
       {
         "_id": "b010",
         "brand_name": "Adidas",
-        "rating": 4.7,
+        "rating": 5.0,
         "description": "Sports equipment manufacturer offering athletic wear and accessories.",
         "brand_logo": "https://upload.wikimedia.org/wikipedia/commons/2/24/Adidas_logo.png",
         "shop_link": "https://www.adidas.com/us?clickId=yz40IpWjlxyKW9Swolwa5yjlUkCT6FWXP3l12U0&irgwc=1&cm_mmc=AdieAffiliates_IR-_-FatCoupon%20Technology%20Ltd-_-Online%20Tracking%20Link-_-ONLINE_TRACKING_LINK-_-&cm_mmc2=adidas-NA-eCom-Affiliates-_-FatCoupon%20Technology%20Ltd-_-None-None-US-always-on-None-1801&gad_source=1&gclid=CjwKCAiAxea5BhBeEiwAh4t5K9on4FJPdbwfmGOaGs5j9eM-VHHde_c5YpewMntw___cXVOg7nB6aRoC6QoQAvD_BwE",
