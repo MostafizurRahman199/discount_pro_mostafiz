@@ -62,6 +62,34 @@ Check out the live version here: [Live Application Link](#)
 
 ---  
 
+## 📦 NPM Packages Used  
+
+Below are the npm packages used in the project and their purposes:  
+
+1. **`react-router-dom`**  
+   - Enables routing and navigation between pages.  
+2. **`firebase`**  
+   - Provides authentication services and integrates backend Firebase database features.  
+3. **`react-icons`**  
+   - Adds scalable vector icons to enhance UI design.  
+4. **`react-toastify`**  
+   - Displays toast notifications for user actions like login success or copy code success.  
+5. **`react-marquee`**  
+   - Implements smooth marquee animation for showcasing top brands.  
+6. **`react-copy-to-clipboard`**  
+   - Allows users to copy coupon codes directly to the clipboard.  
+7. **`aos` (Animate on Scroll)**  
+   - Adds animations to elements when they enter the viewport.  
+
+8. **`dotenv`**  
+   - Loads environment variables securely from a `.env` file.  
+9. **`tailwindcss`**  
+    - Provides a modern, utility-first CSS framework for building responsive and customizable designs.  
+10. **`@mui/material`**  
+    - Material-UI library for implementing prebuilt and customizable UI components.  
+11. **`@mui/icons-material`**  
+    - Material-UI's icon library for integrating Google Material icons.  
+
 ## 📁 JSON Data Structure  
 
 ### Brand Data  
