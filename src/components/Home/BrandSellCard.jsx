@@ -23,7 +23,7 @@ const BrandSellCard = ({ brand }) => {
       </div>
 
  
-      <div className="relative h-48 bg-gradient-to-b from-[#BD9FF5]/10 to-transparent p-6">
+      <div className="relative h-48 bg-gradient-to-b from-[#9d73f3]/10 to-transparent p-6">
         <img 
           src={brand.brand_logo} 
           alt={brand.brand_name}
@@ -38,7 +38,7 @@ const BrandSellCard = ({ brand }) => {
           <h3 className="text-xl font-bold text-gray-800 mb-2">
             {brand.brand_name}
           </h3>
-          <span className="inline-block bg-[#BD9FF5]/10 text-[#BD9FF5] text-sm font-medium px-3 py-1 rounded-full">
+          <span className="inline-block bg-[#9d73f3]/10 text-[#9d73f3] text-sm font-medium px-3 py-1 rounded-full">
             {brand.category}
           </span>
         </div>
@@ -46,13 +46,13 @@ const BrandSellCard = ({ brand }) => {
  
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2 text-gray-600">
-            <FaTicketAlt className="text-[#BD9FF5]" />
+            <FaTicketAlt className="text-[#9d73f3]" />
             <span className="font-medium">
               {brand.coupons.length} {brand.coupons.length === 1 ? 'Coupon' : 'Coupons'}
             </span>
           </div>
           
-          <button onClick={handleNavigate} className="bg-[#BD9FF5] hover:bg-[#9d73f3] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300">
+          <button onClick={handleNavigate} className="bg-[#9d73f3] hover:bg-[#9d73f3] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300">
             View Deals
           </button>
         </div>

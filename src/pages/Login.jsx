@@ -73,9 +73,9 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-lg w-full space-y-8 sm:shadow-lg shadow-[#BD9FF5] p-8  rounded-2xl" data-aos="zoom-in">
+      <div className="max-w-lg w-full space-y-8 sm:shadow-lg shadow-[#9d73f3] p-8  rounded-2xl" data-aos="zoom-in">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-[#BD9FF5]">
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-[#9d73f3]">
             Login to your account
           </h2>
         </div>
@@ -85,7 +85,7 @@ const Login = () => {
               <input
                 type="email"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-[#BD9FF5] focus:border-[#BD9FF5] focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-[#9d73f3] focus:border-[#9d73f3] focus:z-10 sm:text-sm"
                 placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -95,7 +95,7 @@ const Login = () => {
               <input
                 type={showPassword ? "text" : "password"}
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-[#BD9FF5] focus:border-[#BD9FF5] sm:text-sm pr-10"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-[#9d73f3] focus:border-[#9d73f3] sm:text-sm pr-10"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -118,7 +118,7 @@ const Login = () => {
             <div className="text-sm">
               <button
                 onClick={handleForgotPassword}
-                className="font-medium text-[#BD9FF5] hover:text-[#FED12D]"
+                className="font-medium text-[#9d73f3] hover:text-[#FED12D]"
               >
                 Forgot your password?
               </button>
@@ -128,7 +128,7 @@ const Login = () => {
           <div>
             <button
               type="submit"
-              className="group relative w-full flex justify-center  border border-transparent text-sm  bg-[#BD9FF5] hover:bg-[#FED12D] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#BD9FF5] px-8 py-3 rounded-md text-white font-bold transition-transform hover:scale-105 shadow-2xl"
+              className="group relative w-full flex justify-center  border border-transparent text-sm  bg-[#9d73f3] hover:bg-[#FED12D] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#9d73f3] px-8 py-3 rounded-md text-white font-bold transition-transform hover:scale-105 shadow-2xl"
             >
               Login
             </button>
@@ -153,7 +153,7 @@ const Login = () => {
 
         <p className="mt-2 text-center text-sm text-gray-600">
           Don't have an account?{' '}
-          <Link to="/register" className="font-medium text-[#BD9FF5] hover:text-[#FED12D]">
+          <Link to="/register" className="font-medium text-[#9d73f3] hover:text-[#FED12D]">
             Register here
           </Link>
         </p>

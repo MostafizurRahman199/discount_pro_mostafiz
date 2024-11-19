@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin, FaTwitter, FaHeart, FaEnvelope, FaMapMarkerAlt, F
 
 const Footer = () => {
   return (
-    <footer className="relative bg-gradient-to-r from-[#BD9FF5] to-[#FED12D]">
+    <footer className="relative bg-gradient-to-r from-[#9d73f3] to-[#FED12D]">
 
   
 

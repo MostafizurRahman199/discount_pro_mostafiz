@@ -26,7 +26,7 @@ const BrandSell = () => {
     <section className="container mx-auto px-4 py-16">
       <div className="text-center mb-12" data-aos="fade-down">
         <h2 className="text-4xl md:text-5xl font-bold mb-4">
-          <span className="text-[#BD9FF5]">Hot</span>{' '}
+          <span className="text-[#9d73f3]">Hot</span>{' '}
           <span className="text-[#FED12D]">Deals</span>
         </h2>
         <p className="text-gray-600 text-lg">Exclusive offers from top brands</p>

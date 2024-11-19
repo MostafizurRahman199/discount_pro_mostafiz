@@ -45,7 +45,7 @@
         "coupons": [
           {
             "coupon_code": "PRIME50",
-            "description": "$50 off on Prime membership",
+            "description": "$50 off on Prime membership", 
             "expiry_date": "2024-04-30",
             "condition": "New Prime members only",
             "coupon_type": "Fixed Amount"
@@ -53,7 +53,7 @@
           {
             "coupon_code": "FRESH25",
             "description": "25% off on Amazon Fresh orders",
-            "expiry_date": "2024-05-31",
+            "expiry_date": "2024-05-31", 
             "condition": "Prime members only",
             "coupon_type": "Percentage Discount"
           },
@@ -63,6 +63,20 @@
             "expiry_date": "2024-06-30",
             "condition": "Minimum purchase of $30",
             "coupon_type": "Fixed Amount"
+          },
+          {
+            "coupon_code": "ECHO30",
+            "description": "30% off on Echo devices",
+            "expiry_date": "2024-07-15",
+            "condition": "Valid on select Echo models",
+            "coupon_type": "Percentage Discount"
+          },
+          {
+            "coupon_code": "GAMING20",
+            "description": "20% off on gaming accessories",
+            "expiry_date": "2024-08-31",
+            "condition": "Maximum discount $50",
+            "coupon_type": "Percentage Discount"
           }
         ]
       },
@@ -79,8 +93,36 @@
           {
             "coupon_code": "COFFEE20",
             "description": "20% off on any coffee beverage",
-            "expiry_date": "2024-04-15",
+            "expiry_date": "2024-04-15", 
             "condition": "Valid at participating locations only",
+            "coupon_type": "Percentage Discount"
+          },
+          {
+            "coupon_code": "BOGO50",
+            "description": "Buy one get one 50% off on all beverages",
+            "expiry_date": "2024-05-31",
+            "condition": "Valid on same or lower priced item",
+            "coupon_type": "Percentage Discount"
+          },
+          {
+            "coupon_code": "TREAT10",
+            "description": "$10 off any food purchase",
+            "expiry_date": "2024-06-30",
+            "condition": "Minimum purchase of $20 required",
+            "coupon_type": "Fixed Amount"
+          },
+          {
+            "coupon_code": "REWARDS25",
+            "description": "25% off for Rewards members",
+            "expiry_date": "2024-05-15",
+            "condition": "Must be a Starbucks Rewards member",
+            "coupon_type": "Percentage Discount"
+          },
+          {
+            "coupon_code": "EXTRA5",
+            "description": "5% off on all orders",
+            "expiry_date": "2024-07-01",
+            "condition": "No conditions",
             "coupon_type": "Percentage Discount"
           }
         ]
@@ -134,6 +176,20 @@
             "expiry_date": "2024-04-20",
             "condition": "Cannot be combined with other offers",
             "coupon_type": "Percentage Discount"
+          },
+          {
+            "coupon_code": "EXTRA10",
+            "description": "10% off on new arrivals",
+            "expiry_date": "2024-05-10",
+            "condition": "Valid on select items",
+            "coupon_type": "Percentage Discount"
+          },
+          {
+            "coupon_code": "SPRINGSALE",
+            "description": "Free shipping on orders over $50",
+            "expiry_date": "2024-06-01",
+            "condition": "Online orders only",
+            "coupon_type": "Free Shipping"
           }
         ]
       },
@@ -153,6 +209,20 @@
             "expiry_date": "2024-06-30",
             "condition": "New customers only",
             "coupon_type": "Fixed Amount"
+          },
+          {
+            "coupon_code": "DASH5",
+            "description": "5% off on all orders",
+            "expiry_date": "2024-07-15",
+            "condition": "No conditions",
+            "coupon_type": "Percentage Discount"
+          },
+          {
+            "coupon_code": "FREESHIP",
+            "description": "Free delivery on orders over $20",
+            "expiry_date": "2024-08-01",
+            "condition": "Valid for all users",
+            "coupon_type": "Free Shipping"
           }
         ]
       },
@@ -172,6 +242,20 @@
             "expiry_date": "2024-05-15",
             "condition": "Excludes electronics and gift cards",
             "coupon_type": "Fixed Amount"
+          },
+          {
+            "coupon_code": "TARGET10",
+            "description": "10% off on home goods",
+            "expiry_date": "2024-06-10",
+            "condition": "Valid on select items",
+            "coupon_type": "Percentage Discount"
+          },
+          {
+            "coupon_code": "FREESHIP",
+            "description": "Free shipping on orders over $50",
+            "expiry_date": "2024-07-01",
+            "condition": "Online orders only",
+            "coupon_type": "Free Shipping"
           }
         ]
       },
@@ -191,6 +275,14 @@
             "expiry_date": "2024-04-25",
             "condition": "Valid for Beauty Insider members only",
             "coupon_type": "Percentage Discount"
+          },
+         
+          {
+            "coupon_code": "FREESHIP",
+            "description": "Free shipping on orders over $75",
+            "expiry_date": "2024-06-01",
+            "condition": "Online orders only",
+            "coupon_type": "Free Shipping"
           }
         ]
       },
@@ -210,6 +302,20 @@
             "expiry_date": "2024-06-01",
             "condition": "Minimum order value $30",
             "coupon_type": "Fixed Amount"
+          },
+          {
+            "coupon_code": "EATS5",
+            "description": "5% off on all orders",
+            "expiry_date": "2024-07-01",
+            "condition": "No conditions",
+            "coupon_type": "Percentage Discount"
+          },
+          {
+            "coupon_code": "FREESHIP",
+            "description": "Free delivery on orders over $25",
+            "expiry_date": "2024-08-01",
+            "condition": "Valid for all users",
+            "coupon_type": "Free Shipping"
           }
         ]
       },
@@ -229,6 +335,20 @@
             "expiry_date": "2024-05-20",
             "condition": "Valid on select items only",
             "coupon_type": "Percentage Discount"
+          },
+          {
+            "coupon_code": "ADIDAS10",
+            "description": "10% off on all orders",
+            "expiry_date": "2024-06-10",
+            "condition": "No conditions",
+            "coupon_type": "Percentage Discount"
+          },
+          {
+            "coupon_code": "FREESHIP",
+            "description": "Free shipping on orders over $100",
+            "expiry_date": "2024-07-01",
+            "condition": "Online orders only",
+            "coupon_type": "Free Shipping"
           }
         ]
       },
@@ -248,6 +368,20 @@
             "expiry_date": "2024-04-30",
             "condition": "In-store purchases only",
             "coupon_type": "Percentage Discount"
+          },
+          {
+            "coupon_code": "GAMER10",
+            "description": "10% off on all accessories",
+            "expiry_date": "2024-05-15",
+            "condition": "Valid on select items",
+            "coupon_type": "Percentage Discount"
+          },
+          {
+            "coupon_code": "FREESHIP",
+            "description": "Free shipping on orders over $50",
+            "expiry_date": "2024-06-01",
+            "condition": "Online orders only",
+            "coupon_type": "Free Shipping"
           }
         ]
       },
@@ -267,6 +401,20 @@
             "expiry_date": "2024-07-01",
             "condition": "Minimum booking value $500",
             "coupon_type": "Fixed Amount"
+          },
+          {
+            "coupon_code": "BOOK10",
+            "description": "10% off on all bookings",
+            "expiry_date": "2024-08-01",
+            "condition": "No conditions",
+            "coupon_type": "Percentage Discount"
+          },
+          {
+            "coupon_code": "FREESHIP",
+            "description": "Free cancellation on select bookings",
+            "expiry_date": "2024-09-01",
+            "condition": "Valid for all users",
+            "coupon_type": "Free Cancellation"
           }
         ]
       }

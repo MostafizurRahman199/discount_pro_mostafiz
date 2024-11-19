@@ -17,7 +17,7 @@ const FeaturedCategories = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-[#BD9FF5]">Featured</span>{' '}
+            <span className="text-[#9d73f3]">Featured</span>{' '}
             <span className="text-[#FED12D]">Categories</span>
           </h2>
           <p className="text-gray-600 text-lg">Discover deals by category</p>
@@ -27,7 +27,7 @@ const FeaturedCategories = () => {
           {categories.map((category, index) => (
             <div
               key={index}
-              className="p-6 rounded-lg bg-gray-50 hover:bg-[#BD9FF5] hover:text-white 
+              className="p-6 rounded-lg bg-gray-50 hover:bg-[#9d73f3] hover:text-white 
                          transition-all duration-300 cursor-pointer text-center group"
             >
               <div className="text-4xl mb-4 text-[#FED12D] group-hover:text-white 

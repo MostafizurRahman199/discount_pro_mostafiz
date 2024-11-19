@@ -6,7 +6,7 @@ const Reviews = () => {
   const [people, setPeople] = useState([]);
 
   useEffect(() => {
-    // Simulate fetching data from reviews.json
+ 
     const fetchReviews = async () => {
       const response = await fetch("/reviews.json");
       const data = await response.json();
@@ -19,7 +19,7 @@ const Reviews = () => {
 
 
   useEffect(() => {
-    // Fetch random users from Random User API
+    
     const fetchPeople = async () => {
       try {
         const response = await fetch("https://randomuser.me/api/?results=10");
@@ -39,7 +39,7 @@ const Reviews = () => {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <h2 className="text-4xl md:text-5xl font-bold text-center mb-8">
-        <span className="text-[#BD9FF5]">Customer</span>{" "}
+        <span className="text-[#9d73f3]">Customer</span>{" "}
         <span className="text-[#FED12D]">Reviews</span>
       </h2>
 
@@ -53,14 +53,14 @@ const Reviews = () => {
           {reviews.map((review, index) => (
             <div
               key={index}
-              className="bg-white rounded-3xl shadow-lg border border-[#BD9FF5]  p-6 flex flex-col items-center text-center transition-transform hover:scale-105 mx-2 "
+              className="bg-white rounded-3xl shadow-lg border border-[#9d73f3]  p-6 flex flex-col items-center text-center transition-transform hover:scale-105 mx-2 hover:border-[#FED12D]"
               style={{
                 minWidth: "280px",
                 maxWidth: "280px",
-                flexShrink: 0, // Prevent shrinking of the card in the marquee
+                flexShrink: 0, 
               }}
             >
-              {/* Profile Picture */}
+            
               <img
                 src={peopleImages[index]}
                 alt={review.username}
@@ -68,20 +68,20 @@ const Reviews = () => {
                 onError={(e) => (e.target.src = "/fallback-user.png")}
               />
 
-              {/* Username and Occupation */}
-              <h3 className="text-lg font-bold text-[#BD9FF5]">
+            
+              <h3 className="text-lg font-bold text-[#9d73f3]">
                 {review.username}
               </h3>
               <p className="text-sm text-gray-500 italic mb-2">
                 {review.occupation}
               </p>
 
-              {/* Review Description */}
+             
               <p className="text-gray-700 mb-4 line-clamp-3">
                 {review.description}
               </p>
 
-              {/* Rating Section */}
+             
               <div className="flex items-center mb-4">
                 {[...Array(5)].map((_, starIndex) => (
                   <svg
@@ -103,7 +103,7 @@ const Reviews = () => {
                 </span>
               </div>
 
-              {/* Review Date */}
+             
               <p className="text-xs text-gray-400">
                 {new Date(review.date).toLocaleDateString()}
               </p>

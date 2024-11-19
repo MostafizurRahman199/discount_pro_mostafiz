@@ -157,7 +157,7 @@ const Navbar = () => {
                 src={logo}
                 alt="Logo"
               />
-              <span className="text-3xl sm:text-3xl md:text-xl lg:text-3xl text-md font-bold bg-gradient-to-r from-[#BD9FF5] to-[#FED12D] bg-clip-text text-transparent truncate">
+              <span className="text-3xl sm:text-3xl md:text-xl lg:text-3xl text-md font-bold bg-gradient-to-r from-[#9d73f3] to-[#FED12D] bg-clip-text text-transparent truncate">
               Discount PRO
               </span>
             </Link>
@@ -201,7 +201,7 @@ const Navbar = () => {
   
                 <button
                   onClick={handleLogout}
-                  className="bg-[#FED12D]  px-6 py-2 rounded-3xl text-white font-semibold transition-transform hover:scale-105 shadow-2xl  hover:bg-[#BD9FF5] "
+                  className="bg-[#FED12D]  px-6 py-2 rounded-3xl text-white font-semibold transition-transform hover:scale-105 shadow-2xl  hover:bg-[#9d73f3] "
                     >
                       Logout
                     </button>
@@ -211,7 +211,7 @@ const Navbar = () => {
               <>
               <Link
                 to="/login"
-               className=" px-6 py-2 rounded-3xl text-white font-bold transition-transform hover:scale-105 shadow-2xl bg-[#BD9FF5] "
+               className=" px-6 py-2 rounded-3xl text-white font-bold transition-transform hover:scale-105 shadow-2xl bg-[#9d73f3] "
               >
                 Login
               </Link>
@@ -309,7 +309,7 @@ const Navbar = () => {
             user && (
               <button
               onClick={handleLogout}
-              className="bg-[#FED12D]  px-6 py-2 rounded-3xl text-white font-semibold transition-transform hover:scale-105 shadow-2xl  hover:bg-[#BD9FF5] "
+              className="bg-[#FED12D]  px-6 py-2 rounded-3xl text-white font-semibold transition-transform hover:scale-105 shadow-2xl  hover:bg-[#9d73f3] "
             >
               Logout
             </button>

@@ -1,14 +1,17 @@
 import React, { useState, useEffect,  } from 'react';
 import { useParams } from 'react-router-dom';
-import { FaStar, FaCopy } from 'react-icons/fa';
+import { FaStar, FaCopy, FaCheck } from 'react-icons/fa';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import toast, { Toaster } from 'react-hot-toast';
 import Aos from 'aos';
 import { useFirebaseAuth } from '../Auth/AuthProvider';
+import { FaRegCopy } from "react-icons/fa";
+
 
 const BrandDetails = () => {
   const [brand, setBrand] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [copiedIndex, setCopiedIndex] = useState(null);
   const { id } = useParams();
   const { user ,} = useFirebaseAuth();
 
@@ -33,7 +36,8 @@ const BrandDetails = () => {
     Aos.init({ duration: 1000 });
   }, []);
 
-  const handleCopySuccess = () => {
+  const handleCopySuccess = (index) => {
+    setCopiedIndex(index);
     toast.success('Coupon code copied successfully!', {
       duration: 2000,
       position: 'top-center',
@@ -55,7 +59,7 @@ const BrandDetails = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-[#BD9FF5]"></div>
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-[#9d73f3]"></div>
       </div>
     );
   }
@@ -76,7 +80,7 @@ const BrandDetails = () => {
       <div className="bg-white rounded-xl shadow-lg p-8 mb-8 transform hover:scale-[1.02] transition-all duration-300">
         <div className="flex flex-col md:flex-row items-center gap-8">
           <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-[#BD9FF5] to-[#FED12D] rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-[#9d73f3] to-[#FED12D] rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
             <img 
               src={brand.brand_logo} 
               alt={brand.brand_name} 
@@ -84,7 +88,7 @@ const BrandDetails = () => {
             />
           </div>
           <div className="text-center md:text-left flex-1">
-            <h1 className="text-4xl font-bold mb-3 bg-gradient-to-r from-[#BD9FF5] to-[#FED12D] inline-block text-transparent bg-clip-text">
+            <h1 className="text-4xl font-bold mb-3 bg-gradient-to-r from-[#9d73f3] to-[#FED12D] inline-block text-transparent bg-clip-text">
               {brand.brand_name}
             </h1>
             <div className="flex items-center justify-center md:justify-start mb-3 space-x-1">
@@ -119,7 +123,7 @@ const BrandDetails = () => {
                 <h3 className="text-xl font-bold mb-3 text-gray-800">{coupon.description}</h3>
                 <p className="text-gray-600 mb-2">{coupon.condition}</p>
                 <div className="flex items-center text-sm text-gray-500">
-                  <span className="inline-block w-2 h-2 rounded-full bg-[#BD9FF5] mr-2"></span>
+                  <span className="inline-block w-2 h-2 rounded-full bg-[#9d73f3] mr-2"></span>
                   Expires: {new Date(coupon.expiry_date).toLocaleDateString()}
                 </div>
               </div>
@@ -129,17 +133,18 @@ const BrandDetails = () => {
                   <span className="font-mono font-bold text-lg">{coupon.coupon_code}</span>
                   <CopyToClipboard 
                     text={coupon.coupon_code}
-                    onCopy={handleCopySuccess}
+                    onCopy={() => handleCopySuccess(index)}
                   >
-                    <button className="text-[#BD9FF5] hover:text-[#9d73f3] transition-all duration-300 transform group-hover:scale-110">
-                      <FaCopy size={24} />
+                    <button className="text-[#9d73f3] hover:text-[#9d73f3] transition-all duration-300 transform group-hover:scale-110">
+                      {copiedIndex === index ? <FaCopy size={24} />  : <FaRegCopy size={24} />
+ }
                     </button>
                   </CopyToClipboard>
                 </div>
 
                 <button
                   onClick={() => handleUseNow(brand.shop_link)}
-                  className="w-full py-3 bg-gradient-to-r from-[#BD9FF5] to-[#FED12D] text-white rounded-lg hover:opacity-90 transition-all duration-300 font-semibold shadow-md hover:shadow-lg"
+                  className="w-full py-3 bg-gradient-to-r from-[#9d73f3] to-[#FED12D] text-white rounded-lg hover:opacity-90 transition-all duration-300 font-semibold shadow-md hover:shadow-lg"
                 >
                   Use Now
                 </button>

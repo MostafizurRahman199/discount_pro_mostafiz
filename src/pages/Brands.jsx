@@ -57,7 +57,7 @@ const Brands = () => {
     <div data-aos="fade-down">
     <div className="text-center mb-12" >
         <h2 className="text-4xl md:text-5xl font-bold mb-4">
-          <span className="text-[#BD9FF5]">Featured</span>{' '}
+          <span className="text-[#9d73f3]">Featured</span>{' '}
           <span className="text-[#FED12D]">Brands</span>
         </h2>
         <p className="text-gray-600 text-lg">Top brands you can trust</p>
@@ -68,7 +68,7 @@ const Brands = () => {
         <input
           type="text"
           placeholder="Search brands..."
-          className="w-full p-3 border-2 border-[#BD9FF5] rounded-3xl focus:outline-none focus:ring-2 focus:ring-[#FED12D] focus:border-transparent "
+          className="w-full text-[#9d73f3] font-semibold p-3 border-2 border-[#9d73f3] rounded-3xl focus:outline-none focus:ring-2 focus:ring-[#FED12D] focus:border-transparent "
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -85,7 +85,7 @@ const Brands = () => {
           .map(brand => (
             <div key={brand._id} 
                  className="p-4 sm:p-6 border rounded-lg shadow-md 
-                          flex flex-col sm:flex-row items-center gap-4 sm:gap-6
+                          flex flex-col md:flex-row items-center gap-4 sm:gap-6
                           hover:shadow-lg transition-shadow duration-300" 
                           data-aos="fade-up"   
                           data-aos-anchor-placement="center-bottom"  
@@ -106,8 +106,8 @@ const Brands = () => {
               </div>
 
               {/* Brand Info */}
-              <div className="flex-1 text-center sm:text-left">
-                <h2 className="text-xl font-bold">{brand.brand_name}</h2>
+              <div className="flex-1 text-center md:text-left">
+                <h2 className="text-3xl md:text-xl font-bold">{brand.brand_name}</h2>
                 <p className="text-gray-600 mt-2">{brand.description}</p>
                 <p className="text-gray-500 mt-2 italic">
                   <span 
@@ -119,17 +119,17 @@ const Brands = () => {
               </div>
 
               {/* Action Section */}
-              <div className="flex flex-col items-center sm:items-end">
+              <div className="flex flex-col items-center md:items-end">
                 <button
                   onClick={() => handleViewCoupons(brand._id)}
-                  className="px-8 py-3 rounded-3xl text-white font-bold transition-transform hover:scale-105 shadow-2xl  hover:bg-[#FED12D]  bg-[#BD9FF5] "
-                  style={{  border: '2px solid #BD9FF5'}}
+                  className="px-8 py-3 rounded-3xl text-white font-bold transition-transform hover:scale-105 shadow-2xl  hover:bg-[#FED12D]  bg-[#9d73f3] "
+                  style={{  border: '2px solid #9d73f3'}}
                 >
                   View Coupons
                 </button>
                 
                 {brand.isSaleOn && (
-                  <div className="mt-4 animate-bounce  text-lg font-bold" 
+                  <div className="mt-4 animate-bounce  text-xl md:text-xl  lg:text-2xl font-bold" 
                        style={{ color: '#FED12D' }}>
                     SALE IS ON!
                   </div>

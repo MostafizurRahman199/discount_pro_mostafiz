@@ -39,7 +39,7 @@ const WhyChooseUs = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12" data-aos="fade-down">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-[#BD9FF5]">Why</span>{' '}
+            <span className="text-[#9d73f3]">Why</span>{' '}
             <span className="text-[#FED12D]">Choose Us</span>
           </h2>
           <p className="text-gray-600 text-lg">What makes us different</p>
@@ -52,7 +52,7 @@ const WhyChooseUs = () => {
             
               className="p-6 bg-white rounded-lg shadow-lg transform transition-transform duration-300 hover:translate-y-0 hover:scale-105"
             >
-              <div className="text-4xl mb-4 text-[#BD9FF5]">{feature.icon}</div>
+              <div className="text-4xl mb-4 text-[#9d73f3]">{feature.icon}</div>
               <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
               <p className="text-gray-600">{feature.description}</p>
             </div>
