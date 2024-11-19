@@ -21,6 +21,31 @@ const Login = () => {
     Aos.init({ duration: 1000 });
   }, []);
 
+
+  const showError = (error) => {
+    if(error.code === 'auth/invalid-credential'){
+      toast.error('Invalid credentials');
+    }
+    else if(error.code === 'auth/user-not-found'){
+      toast.error('User not found');
+    }
+    else if(error.code === 'auth/wrong-password'){
+      toast.error('Wrong password');
+    }
+    else if(error.code === 'auth/invalid-email'){
+      toast.error('Invalid email');
+    }
+    else if(error.code === 'auth/too-many-requests'){
+      toast.error('Too many requests');
+    }
+    else if(error.code === 'auth/email-already-in-use'){
+      toast.error('Email already in use');
+    }
+    else{
+      toast.error("Something went wrong");
+    }
+  }
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -28,7 +53,7 @@ const Login = () => {
       toast.success('Successfully logged in!');
       navigate(from, { replace: true });
     } catch (error) {
-      toast.error(error.message);
+      showError(error);
     }
   };
 
@@ -38,7 +63,7 @@ const Login = () => {
       toast.success('Successfully logged in with Google!');
       navigate(from, { replace: true });
     } catch (error) {
-      toast.error(error.message);
+      showError(error);
     }
   };
 

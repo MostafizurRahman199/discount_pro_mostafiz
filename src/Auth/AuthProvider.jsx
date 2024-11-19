@@ -53,9 +53,6 @@ const AuthProvider = ({children}) => {
                 photoURL: photoURL,
             });
     
-      
-    
-            // toast.success('Registration successful!');
             return result.user;
         } catch (error) {
             toast.error(error.message);
@@ -84,13 +81,11 @@ const AuthProvider = ({children}) => {
                 photoURL: result.user.photoURL,
             });
             
-            // Set user state after profile update
             setUser(auth.currentUser);
             
-            // toast.success('Successfully signed in with Google!');
             return auth.currentUser;
         } catch (error) {
-            toast.error(error.message);
+            // toast.error(error.message);
             throw error;
         } finally {
             setLoading(false);
@@ -107,19 +102,16 @@ const AuthProvider = ({children}) => {
         try {
             const result = await signInWithEmailAndPassword(auth, email, password);
             
-            // Update profile to ensure all information is properly set
             await updateProfile(auth.currentUser, {
                 displayName: result.user.displayName,
                 photoURL: result.user.photoURL,
             });
             
-            // Set user state after profile update
+          
             setUser(auth.currentUser);
-            
-            toast.success('Successfully logged in!');
             return auth.currentUser;
         } catch (error) {
-            toast.error(error.message.replace('Firebase: ', ''));
+           
             throw error;
         } finally {
             setLoading(false);
@@ -137,7 +129,6 @@ const AuthProvider = ({children}) => {
         setLoading(true);
         try {
             await sendPasswordResetEmail(auth, email);
-            // toast.success('Password reset email sent!');
         } catch (error) {
             toast.error(error.message);
             throw error;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { useFirebaseAuth } from '../Auth/AuthProvider';
 import { FaHome, FaFontAwesome, FaUserCircle, FaCode, FaTags, FaUser, FaInfoCircle, FaUserPlus, FaSignInAlt } from 'react-icons/fa';
@@ -17,6 +17,7 @@ const Navbar = () => {
   const { user, logOut, loading } = useFirebaseAuth();
   const navigate = useNavigate();
 
+  // console.log(user.photoURL);
 
 
 
@@ -79,14 +80,14 @@ const Navbar = () => {
   // ___________________________getProfileImage helper function
 
   const getProfileImage = (user) => {
-    if (user?.photoURL) {
+    if (user.photoURL) {
         return user?.photoURL;
     }
     
-    if (user?.providerData) {
+    if (user.providerData) {
         for (const provider of user.providerData) {
             if (provider.photoURL) {
-                return provider.photoURL;
+                return provider?.photoURL;
             }
         }
     }
@@ -103,9 +104,25 @@ const Navbar = () => {
 
   // ___________________________ProfileImage component
 
-  const ProfileImage = ({ user }) => {
+  const ProfileImage =  ({ user }) => {
+
+
     const [imageError, setImageError] = React.useState(false);
+    // const [imageUrl, setImageUrl] = React.useState(null);
+
     const imageUrl = !imageError ? getProfileImage(user) : 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
+    console.log(imageUrl);
+
+
+
+    // const imageUrl =   getProfileImage(user) ;
+
+    // useEffect(() => {
+    //   setImageUrl(getProfileImage(user));
+    // }, [user]);
+
+    // setImageUrl(user?.photoURL);
+    console.log(imageUrl);
 
     return (
         <img
@@ -124,25 +141,24 @@ const Navbar = () => {
 
   return (
     <nav className="bg-white/80 backdrop-blur-md fixed  shadow-lg w-full top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full mx-auto px-2 sm:px-2 lg:px-8">
         <div className="flex justify-between items-center h-16">
-
           {/* Logo - Updated for better mobile display */}
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center space-x-2">
               <img
-                className="h-6 w-auto sm:h-10"
+                className="block md:hidden lg:block h-10 w-auto sm:h-10"
                 src={logo}
                 alt="Logo"
               />
-              <span className="text-3xl sm:text-sm md:text-md lg:text-3xl text-md font-bold bg-gradient-to-r from-[#BD9FF5] to-[#FED12D] bg-clip-text text-transparent truncate">
+              <span className="text-3xl sm:text-3xl md:text-xl lg:text-3xl text-md font-bold bg-gradient-to-r from-[#BD9FF5] to-[#FED12D] bg-clip-text text-transparent truncate">
               Discount PRO
               </span>
             </Link>
           </div>
 
           {/* Navigation Links - Center */}
-          <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
+          <div className="hidden md:flex items-center space-x-2 lg:space-x-8">
             <Link to="/" className={getLinkStyle('/')} onClick={() => setActiveLink('/')}>
               <FaHome className="inline-block mr-1" /> Home
             </Link>
@@ -151,14 +167,9 @@ const Navbar = () => {
             </Link>
            {
             user && (
-            
-                <Link to="/my-profile" className={getLinkStyle('/my-profile')} onClick={() => setActiveLink('/my-profile')}>
+              <Link to="/my-profile" className={getLinkStyle('/my-profile')} onClick={() => setActiveLink('/my-profile')}>
                 <FaUser className="inline-block mr-1" /> Profile
               </Link>
-
-         
-        
-
            )}
             <Link to="/about" className={getLinkStyle('/about')} onClick={() => setActiveLink('/about')}>
               <FaCode className="inline-block mr-1" /> About Dev
@@ -168,15 +179,18 @@ const Navbar = () => {
 
 
           {/* User Profile/Login Button - Updated for mobile */}
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden md:flex items-center gap-1 lg:gap-2">
             {user ? (
-              <div className="flex items-center gap-4">
-                <button className="flex items-center space-x-2">
-                  <ProfileImage user={user} />
-                  <span className="hidden lg:block text-sm font-medium text-gray-700">
-                    {user.email || user.email?.split('@')[0] || 'User'}
-                  </span>
-                </button>
+              <div className="flex items-center gap-2 lg:gap-4">
+              
+                <div className='flex flex-col lg:flex lg:flex-row items-center justify-center lg:gap-2'>
+                <ProfileImage user={user} />
+                 
+                 <span className="hidden md:block text-sm font-medium text-gray-700">
+                   {user.email?.split('.')[0] || user.email?.split('@')[0] || 'User'}
+                 </span>
+                </div>
+                
              
   
                 <button
@@ -225,7 +239,7 @@ const Navbar = () => {
 
 
 
-{/* Mobile Menu  here orginal*/}
+
    
       <div 
         className={`
@@ -278,16 +292,23 @@ const Navbar = () => {
             }}
           >
             <FaInfoCircle className="inline-block mr-1" /> About
-           </Link>
+          </Link>
 
-        { user && <div className="flex justify-center"><ProfileImage user={user} /></div>}
-        { user && <div className=" text-gray-700 break-words">
-                    {user.displayName || user.email?.split('@')[0] || 'User'}
-                  </div>}
-        { user && <button onClick={handleLogout} className="bg-[#FED12D]  px-6 py-2 rounded-3xl text-white font-semibold transition-transform hover:scale-105 shadow-2xl  hover:bg-[#BD9FF5] ">
-             Logout
-           </button>}
+             { user && <div className="flex justify-center"><ProfileImage user={user} /></div>} 
+             { user && <div className=" text-gray-700 break-words">
+                    {user?.displayName?.slice(0, 10) || user.email?.split('@')[0] || 'User'}
+                  </div>} 
 
+          {
+            user && (
+              <button
+              onClick={handleLogout}
+              className="bg-[#FED12D]  px-6 py-2 rounded-3xl text-white font-semibold transition-transform hover:scale-105 shadow-2xl  hover:bg-[#BD9FF5] "
+            >
+              Logout
+            </button>
+            )
+          }
           
           {/* Add login button for mobile */}
           {!user && (

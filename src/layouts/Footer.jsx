@@ -73,9 +73,9 @@ const Footer = () => {
     
         <div className="flex justify-center space-x-6 mt-8">
           {[
-            { icon: FaGithub, link: "#" },
-            { icon: FaLinkedin, link: "#" },
-            { icon: FaTwitter, link: "#" }
+            { icon: FaGithub, link: "https://github.com/MostafizurRahman199" },
+            { icon: FaLinkedin, link: "https://www.linkedin.com/in/md-mostafizur-rahman-78bb511a4/" },
+            { icon: FaTwitter, link: "https://x.com/Fardilshifat" }
           ].map((social, index) => (
             <a
               key={index}

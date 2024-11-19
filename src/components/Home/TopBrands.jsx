@@ -10,13 +10,6 @@ const TopBrands = () => {
   const { user } = useFirebaseAuth();
 
 
-  const handleViewCoupons = (brandId) => {
-    if (user) {
-      navigate(`/brands/${brandId}`);
-    } else {
-      navigate('/login', { state: { from: `/brands/${brandId}` } });
-    }
-  };
 
   return (
     <div className="py-6 md:py-12 bg-gray-50 font-poppins">
@@ -38,7 +31,7 @@ const TopBrands = () => {
           {brands.brands.map((brand) => (
             <div
               key={brand._id}
-              onClick={() => handleViewCoupons(brand._id)}
+              onClick={() => navigate(`/brands`)}
               className="mx-4 md:mx-8 cursor-pointer hover:scale-110 transition-transform"
             >
               <img
