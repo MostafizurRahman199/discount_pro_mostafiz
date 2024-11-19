@@ -52,7 +52,7 @@ const BrandSellCard = ({ brand }) => {
             </span>
           </div>
           
-          <button onClick={handleNavigate} className="bg-[#BD9FF5] hover:bg-[#BD9FF5]/90 text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300">
+          <button onClick={handleNavigate} className="bg-[#BD9FF5] hover:bg-[#9d73f3] text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300">
             View Deals
           </button>
         </div>

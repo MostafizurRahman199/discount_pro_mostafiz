@@ -3,6 +3,8 @@ import { useFirebaseAuth } from '../Auth/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Aos from 'aos';
+import { useEffect } from 'react';
 
 const UpdateProfile = () => {
     const { user, setUser } = useFirebaseAuth();
@@ -11,6 +13,10 @@ const UpdateProfile = () => {
         displayName: user?.displayName || '',
         photoURL: user?.photoURL || ''
     });
+
+    useEffect(() => {
+        Aos.init({ duration: 1000 });
+      }, []);
 
     const handleUpdate = async (e) => {
         e.preventDefault();

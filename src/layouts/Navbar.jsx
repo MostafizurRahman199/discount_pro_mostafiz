@@ -126,6 +126,7 @@ const Navbar = () => {
     <nav className="bg-white/80 backdrop-blur-md fixed  shadow-lg w-full top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
+
           {/* Logo - Updated for better mobile display */}
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center space-x-2">
@@ -150,9 +151,14 @@ const Navbar = () => {
             </Link>
            {
             user && (
-              <Link to="/my-profile" className={getLinkStyle('/my-profile')} onClick={() => setActiveLink('/my-profile')}>
+            
+                <Link to="/my-profile" className={getLinkStyle('/my-profile')} onClick={() => setActiveLink('/my-profile')}>
                 <FaUser className="inline-block mr-1" /> Profile
               </Link>
+
+         
+        
+
            )}
             <Link to="/about" className={getLinkStyle('/about')} onClick={() => setActiveLink('/about')}>
               <FaCode className="inline-block mr-1" /> About Dev
@@ -168,7 +174,7 @@ const Navbar = () => {
                 <button className="flex items-center space-x-2">
                   <ProfileImage user={user} />
                   <span className="hidden lg:block text-sm font-medium text-gray-700">
-                    {user.displayName || user.email?.split('@')[0] || 'User'}
+                    {user.email || user.email?.split('@')[0] || 'User'}
                   </span>
                 </button>
              
@@ -219,7 +225,7 @@ const Navbar = () => {
 
 
 
-
+{/* Mobile Menu  here orginal*/}
    
       <div 
         className={`
@@ -272,7 +278,16 @@ const Navbar = () => {
             }}
           >
             <FaInfoCircle className="inline-block mr-1" /> About
-          </Link>
+           </Link>
+
+        { user && <div className="flex justify-center"><ProfileImage user={user} /></div>}
+        { user && <div className=" text-gray-700 break-words">
+                    {user.displayName || user.email?.split('@')[0] || 'User'}
+                  </div>}
+        { user && <button onClick={handleLogout} className="bg-[#FED12D]  px-6 py-2 rounded-3xl text-white font-semibold transition-transform hover:scale-105 shadow-2xl  hover:bg-[#BD9FF5] ">
+             Logout
+           </button>}
+
           
           {/* Add login button for mobile */}
           {!user && (

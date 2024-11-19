@@ -43,13 +43,13 @@ const About = () => {
             />
           </div>
           <h1
-            className="text-2xl md:text-3xl font-bold mb-2 text-[#BD9FF5]"
+            className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 text-[#BD9FF5]"
             data-aos="zoom-in"
           >
             Md. Mostafizur Rahman
           </h1>
 
-          <p className="text-lg text-center md:text-center break-words ">
+          <p className="text-base sm:text-lg text-center md:text-center break-words ">
             I am a passionate and dedicated computer science graduate with a
             strong interest in web development and software engineering. I am
             always eager to learn new technologies and improve my skills.
@@ -61,39 +61,39 @@ const About = () => {
            
            
             <section className="md:space-y-4">
-              <h2 className="md:text-2xl font-semibold border-b-2 border-[#FED12D] pb-2">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold border-b-2 border-[#FED12D] pb-2">
                 Personal Information
               </h2>
               <div className="flex flex-wrap justify-center md:justify-start mb-4">
-                <p className="text-lg w-full md:w-1/2 break-words">
+                <p className="text-base sm:text-lg w-full md:w-1/2 break-words">
                   Name:{" "}
                   <span className="font-medium">MD. MOSTAFIZUR RAHMAN</span>
                 </p>
-                <p className="text-lg w-full md:w-1/2 break-words">
+                <p className="text-base sm:text-lg w-full md:w-1/2 break-words">
                   Email:{" "}
                   <span className="font-medium">
                     mrahman202003@bscse.uiu.ac.bd
                   </span>
                 </p>
-                <p className="text-lg w-full md:w-1/2 break-words">
+                <p className="text-base sm:text-lg w-full md:w-1/2 break-words">
                   Phone: <span className="font-medium">+8801791604420</span>
                 </p>
               </div>
             </section>
 
             <section className="space-y-4">
-              <h2 className="md:text-2xl font-semibold border-b-2 border-[#FED12D] pb-2">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold border-b-2 border-[#FED12D] pb-2">
                 Education
               </h2>
               <div className="flex flex-wrap justify-center mb-4">
-                <div className="text-lg w-full md:w-1/2">
+                <div className="text-base sm:text-lg w-full md:w-1/2">
                   <p>Bachelor of Computer Science & Engineering</p>
                   <p>
                     CGPA: <span className="font-medium">3.79 (2024)</span>
                   </p>
                   <p>United International University</p>
                 </div>
-                <div className="text-lg w-full md:w-1/2">
+                <div className="text-base sm:text-lg w-full md:w-1/2">
                   <p>
                     GPA: <span className="font-medium">5.00</span> (Science)
                     (2018) - Govt Sayed Hatem Ali College, Barisal
