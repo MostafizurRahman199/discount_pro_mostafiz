@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-
-
+import { Helmet } from "react-helmet";
 
 import Register from "../pages/Register";
 import Login from "../pages/Login";
@@ -23,26 +22,52 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Home />,
+                element: (
+                    <>
+                        <Helmet>
+                            <title>Discount PRO - Home</title>
+                        </Helmet>
+                        <Home />
+                    </>
+                ),
             },
             
            
             {
                 path: "/register",
-                element: <Register />,
+                element: (
+                    <>
+                        <Helmet>
+                            <title>Discount PRO - Register</title>
+                        </Helmet>
+                        <Register />
+                    </>
+                ),
             },
            
             {
                 path: "/brands",
-                element: <Brands />,
+                element: (
+                    <>
+                        <Helmet>
+                            <title>Discount PRO - Brands</title>
+                        </Helmet>
+                        <Brands />
+                    </>
+                ),
                 loader: () => fetch('/brands.json'),
             },
             {
                 path: "/brands/:id",
                 element: (
-                    <PrivateRoute>
-                        <BrandDetails />
-                    </PrivateRoute>
+                    <>
+                        <Helmet>
+                            <title>Discount PRO - Brand Details</title>
+                        </Helmet>
+                        <PrivateRoute>
+                            <BrandDetails />
+                        </PrivateRoute>
+                    </>
                 ),
             },
             {
@@ -51,35 +76,73 @@ const router = createBrowserRouter([
             },
             {
                 path: "/about",
-                element: <About />,
+                element: (
+                    <>
+                        <Helmet>
+                            <title>Discount PRO - About</title>
+                        </Helmet>
+                        <About />
+                    </>
+                ),
             },
             {
                 path: "/login",
-                element: <Login />,
+                element: (
+                    <>
+                        <Helmet>
+                            <title>Discount PRO - Login</title>
+                        </Helmet>
+                        <Login />
+                    </>
+                ),
             },
             {
                 path: "/forgot-password",
-                element: <ForgetPassword/>,
+                element: (
+                    <>
+                        <Helmet>
+                            <title>Discount PRO - Forgot Password</title>
+                        </Helmet>
+                        <ForgetPassword />
+                    </>
+                ),
             },
             {
                 path: "/my-profile",
-               element: (
-                <PrivateRoute>
-                    <Profile />
-                </PrivateRoute>
-               ),
+                element: (
+                    <>
+                        <Helmet>
+                            <title>Discount PRO - My Profile</title>
+                        </Helmet>
+                        <PrivateRoute>
+                            <Profile />
+                        </PrivateRoute>
+                    </>
+                ),
             },
             {
                 path: "/update-profile",
-               element: (
-                <PrivateRoute>
-                    <UpdateProfile />
-                </PrivateRoute>
-               ),
+                element: (
+                    <>
+                        <Helmet>
+                            <title>Discount PRO - Update Profile</title>
+                        </Helmet>
+                        <PrivateRoute>
+                            <UpdateProfile />
+                        </PrivateRoute>
+                    </>
+                ),
             },
             {
                 path: "*",
-                element: <ErrorPage />,
+                element: (
+                    <>
+                        <Helmet>
+                            <title>Discount PRO - Error</title>
+                        </Helmet>
+                        <ErrorPage />
+                    </>
+                ),
             },
             
            

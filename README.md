@@ -5,7 +5,7 @@ Discount PRO is a single-page web application designed to help users easily disc
 ---  
 
 ## 🌟 Live Preview  
-Check out the live version here: [Live Application Link](#)  
+Check out the live version here: [https://discount-pro-by-mostafiz.netlify.app/](#)  
 
 ---  
 
