@@ -80,7 +80,7 @@ const Footer = () => {
             <a
               key={index}
               href={social.link}
-              className="transform hover:scale-110 transition-transform duration-300 hover:text-purple-900"
+              className="transform hover:scale-110 transition-transform duration-300 text-purple-800 hover:text-purple-900"
               target="_blank"
               rel="noopener noreferrer"
             >
