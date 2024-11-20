@@ -82,7 +82,7 @@ const Navbar = () => {
 
   const getProfileImage = (user) => {
     if (user.photoURL) {
-        return user?.photoURL;
+        return user?.photoURL || user.photoURL;
     }
     
     if (user.providerData) {
